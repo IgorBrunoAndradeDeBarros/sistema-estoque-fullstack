@@ -35,5 +35,4 @@ public class Produto extends PanacheEntity {
 
     @Column(name = "ativo", nullable = false)
     public Boolean ativo = true;
-
 }
