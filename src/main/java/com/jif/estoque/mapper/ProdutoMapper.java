@@ -20,4 +20,17 @@ public class ProdutoMapper {
         return dto;
     }
 
+    public static Produto toEntity(ProdutoDTO produtoDTO) {
+        Produto produto = new Produto();
+        produto.codigo = produtoDTO.getCodigo();
+        produto.nome = produtoDTO.getNome();
+        produto.descricao = produtoDTO.getDescricao();
+        produto.categoria = produtoDTO.getCategoria();
+        produto.unidade = produtoDTO.getUnidade();
+        produto.precoCusto = produtoDTO.getPrecoCusto();
+        produto.estoqueMin = produtoDTO.getEstoqueMin();
+        produto.ativo = produtoDTO.getAtivo() != null ? produtoDTO.getAtivo() : true;
+        return produto;
+    }
+
 }

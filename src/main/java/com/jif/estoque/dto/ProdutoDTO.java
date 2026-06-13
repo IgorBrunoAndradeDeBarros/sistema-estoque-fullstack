@@ -17,5 +17,5 @@ public class ProdutoDTO {
     private BigDecimal precoCusto;
     private BigDecimal estoqueMin;
     private Long fornecedorId;
-    private boolean ativo;
+    private Boolean ativo;
 }
