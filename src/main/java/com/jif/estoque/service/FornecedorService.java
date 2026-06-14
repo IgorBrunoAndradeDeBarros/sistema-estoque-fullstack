@@ -8,6 +8,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.WebApplicationException;
+import jakarta.ws.rs.core.Response;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +26,7 @@ public class FornecedorService {
         if (nome != null || cnpj != null) {
             StringBuilder query = new StringBuilder("1=1");
             List<Object> params = new ArrayList<>();
-            int i = 0;
+            int i = 1;
 
             if (nome != null) {
                 query.append(" and lower(razaoSocial) like ?").append(i++);
@@ -47,7 +48,9 @@ public class FornecedorService {
     public FornecedorDTO buscarPorId(Long id) {
         Fornecedor fornecedor = fornecedorRepository.findById(id);
         if (fornecedor == null) {
-            throw new WebApplicationException("Fornecedor não encontrado", 404);
+            throw new WebApplicationException(
+                    Response.status(404).entity("Produto não encontrado").build()
+            );
         }
         return FornecedorMapper.toDTO(fornecedor);
     }
@@ -62,7 +65,9 @@ public class FornecedorService {
     public FornecedorDTO atualizar(Long id, FornecedorDTO dto) {
         Fornecedor fornecedor = fornecedorRepository.findById(id);
         if (fornecedor == null) {
-            throw new WebApplicationException("Fornecedor não encontrado", 404);
+            throw new WebApplicationException(
+                    Response.status(404).entity("Produto não encontrado").build()
+            );
         }
 
         fornecedor.razaoSocial = dto.getRazaoSocial();
@@ -78,7 +83,9 @@ public class FornecedorService {
     public void desativar(Long id) {
         Fornecedor fornecedor = fornecedorRepository.findById(id);
         if (fornecedor == null) {
-            throw new WebApplicationException("Fornecedor não encontrado", 404);
+            throw new WebApplicationException(
+                    Response.status(404).entity("Produto não encontrado").build()
+            );
         }
         fornecedor.ativo = false;
     }
