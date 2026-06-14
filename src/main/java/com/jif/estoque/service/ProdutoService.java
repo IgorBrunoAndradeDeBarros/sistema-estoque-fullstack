@@ -1,9 +1,12 @@
 package com.jif.estoque.service;
 
+import com.jif.estoque.dto.FornecedorDTO;
 import com.jif.estoque.dto.ProdutoDTO;
 import com.jif.estoque.dto.ProdutoSaldoDTO;
 import com.jif.estoque.entity.EstoqueSaldo;
+import com.jif.estoque.entity.Fornecedor;
 import com.jif.estoque.entity.Produto;
+import com.jif.estoque.mapper.FornecedorMapper;
 import com.jif.estoque.mapper.ProdutoMapper;
 import com.jif.estoque.mapper.ProdutoSaldoMapper;
 import com.jif.estoque.repository.EstoqueSaldoRepository;
@@ -124,5 +127,4 @@ public class ProdutoService {
                 .filter(dto -> dto != null)
                 .toList();
     }
-
 }
