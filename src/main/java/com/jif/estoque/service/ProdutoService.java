@@ -1,9 +1,14 @@
 package com.jif.estoque.service;
 
+import com.jif.estoque.dto.FornecedorDTO;
 import com.jif.estoque.dto.ProdutoDTO;
+import com.jif.estoque.dto.ProdutoDetalheDTO;
 import com.jif.estoque.dto.ProdutoSaldoDTO;
 import com.jif.estoque.entity.EstoqueSaldo;
+import com.jif.estoque.entity.Fornecedor;
 import com.jif.estoque.entity.Produto;
+import com.jif.estoque.mapper.FornecedorMapper;
+import com.jif.estoque.mapper.ProdutoDetalheMapper;
 import com.jif.estoque.mapper.ProdutoMapper;
 import com.jif.estoque.mapper.ProdutoSaldoMapper;
 import com.jif.estoque.repository.EstoqueSaldoRepository;
@@ -13,6 +18,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.WebApplicationException;
+import jakarta.ws.rs.core.Response;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +42,7 @@ public class ProdutoService {
         if (nome != null || ativo != null || categoria != null) {
             StringBuilder query = new StringBuilder("1=1");
             List<Object> params = new ArrayList<>();
-            int i = 0;
+            int i = 1;
 
             if (nome != null) {
                 query.append(" and lower(nome) like ?").append(i++);
@@ -58,12 +64,17 @@ public class ProdutoService {
         return produtos.stream().map(ProdutoMapper::toDTO).toList();
     }
 
-    public ProdutoDTO buscarPorId(Long id) {
+    public ProdutoDetalheDTO buscarPorId(Long id) {
         Produto produto = produtoRepository.findById(id);
         if (produto == null) {
-            throw new WebApplicationException("Produto não encontrado", 404);
+            throw new WebApplicationException(
+                    Response.status(404).entity("Produto não encontrado").build()
+            );
         }
-        return ProdutoMapper.toDTO(produto);
+
+        EstoqueSaldo saldo = estoqueSaldoRepository.find("produto", produto).firstResult();
+
+        return ProdutoDetalheMapper.toDTO(produto, saldo);
     }
 
     @Transactional
@@ -82,7 +93,9 @@ public class ProdutoService {
     public ProdutoDTO atualizar(Long id, ProdutoDTO dto) {
         Produto produto = produtoRepository.findById(id);
         if (produto == null) {
-            throw new WebApplicationException("Produto não encontrado", 404);
+            throw new WebApplicationException(
+                    Response.status(404).entity("Produto não encontrado").build()
+            );
         }
 
         produto.codigo = dto.getCodigo();
@@ -105,7 +118,9 @@ public class ProdutoService {
     public void desativar(Long id) {
         Produto produto = produtoRepository.findById(id);
         if (produto == null) {
-            throw new WebApplicationException("Produto não encontrado", 404);
+            throw new WebApplicationException(
+                    Response.status(404).entity("Produto não encontrado").build()
+            );
         }
         produto.ativo = false;
     }
@@ -124,5 +139,4 @@ public class ProdutoService {
                 .filter(dto -> dto != null)
                 .toList();
     }
-
 }

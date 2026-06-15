@@ -18,7 +18,7 @@ public class ProdutoDetalheDTO {
     private BigDecimal estoqueMin;
     private boolean ativo;
 
-    private String nomeForcenedor;
+    private String nomeFornecedor;
 
     private BigDecimal quantidade;
     private BigDecimal custoMedio;

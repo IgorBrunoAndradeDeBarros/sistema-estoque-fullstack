@@ -1,6 +1,7 @@
 package com.jif.estoque.resource;
 
 import com.jif.estoque.dto.ProdutoDTO;
+import com.jif.estoque.dto.ProdutoDetalheDTO;
 import com.jif.estoque.dto.ProdutoSaldoDTO;
 import com.jif.estoque.service.ProdutoService;
 import jakarta.inject.Inject;
@@ -31,7 +32,7 @@ public class ProdutoResource {
     @GET
     @Path("/{id}")
     public Response buscarPorId(@PathParam("id") Long id) {
-        ProdutoDTO produto = produtoService.buscarPorId(id);
+        ProdutoDetalheDTO produto = produtoService.buscarPorId(id);
         return Response.ok(produto).build();
     }
 
