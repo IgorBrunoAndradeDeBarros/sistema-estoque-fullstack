@@ -21,7 +21,7 @@ services:
   estoque-api:
     build:
       context: .
-      dockerfile: src/main/docker/Dockerfile.jvm
+      dockerfile: backend/src/main/docker/Dockerfile.jvm
     container_name: estoque-api
     ports:
       - "8080:8080"
