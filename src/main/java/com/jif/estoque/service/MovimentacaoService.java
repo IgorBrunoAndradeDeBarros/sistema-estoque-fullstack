@@ -1,11 +1,14 @@
 package com.jif.estoque.service;
 
 import com.jif.estoque.dto.MovimentacaoDTO;
+import com.jif.estoque.entity.Alerta;
 import com.jif.estoque.entity.EstoqueSaldo;
 import com.jif.estoque.entity.Movimentacao;
 import com.jif.estoque.entity.Produto;
+import com.jif.estoque.enums.TipoAlerta;
 import com.jif.estoque.enums.TipoMovimentacao;
 import com.jif.estoque.mapper.MovimentacaoMapper;
+import com.jif.estoque.repository.AlertaRepository;
 import com.jif.estoque.repository.EstoqueSaldoRepository;
 import com.jif.estoque.repository.MovimentacaoRepository;
 import com.jif.estoque.repository.ProdutoRepository;
@@ -86,6 +89,8 @@ public class MovimentacaoService {
 
         saldo.quantidade = saldo.quantidade.subtract(dto.getQuantidade());
 
+        verificarAlerta(produto,saldo);
+
         return MovimentacaoMapper.toDTO(movimentacao);
     }
 
@@ -120,6 +125,8 @@ public class MovimentacaoService {
         if (saldo.id == null) {
             estoqueSaldoRepository.persist(saldo);
         }
+
+        verificarAlerta(produto, saldo );
 
         return MovimentacaoMapper.toDTO(movimentacao);
     }
@@ -166,5 +173,26 @@ public class MovimentacaoService {
             );
         }
         return MovimentacaoMapper.toDTO(movimentacao);
+    }
+
+    @Inject
+    AlertaRepository alertaRepository;
+
+    private void verificarAlerta(Produto produto, EstoqueSaldo saldo) {
+        if (saldo.quantidade.compareTo(BigDecimal.ZERO) <= 0) {
+            criarAlerta(produto, TipoAlerta.ESTOQUE_ZERADO,
+                    "Estoque zerado para o produto " + produto.nome);
+        } else if (saldo.quantidade.compareTo(produto.estoqueMin) <= 0) {
+            criarAlerta(produto, TipoAlerta.ESTOQUE_MINIMO,
+                    "Estoque abaixo do mínimo para o produto " + produto.nome);
+        }
+    }
+
+    private void criarAlerta(Produto produto, TipoAlerta tipo, String mensagem) {
+        Alerta alerta = new Alerta();
+        alerta.produto = produto;
+        alerta.tipoAlerta = tipo;
+        alerta.mensagem = mensagem;
+        alertaRepository.persist(alerta);
     }
 }
