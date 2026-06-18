@@ -1,1 +1,34 @@
-<p>home works!</p>
+<div class="page-container">
+  <h2>Visão Geral do Estoque</h2>
+
+  <div class="dashboard-grid">
+    <section class="dashboard-card status-card">
+      <h3>⚠️ Alertas Críticos Ativos</h3>
+      <div *ngIf="alertasRecentes.length === 0" class="empty">Nenhum alerta crítico ativo.</div>
+      <ul class="home-alerts">
+        <li *ngFor="let alerta of alertasRecentes">{{ alerta.mensagem }}</li>
+      </ul>
+    </section>
+
+    <section class="dashboard-card table-card">
+      <h3>📉 Produtos com Estoque Abaixo do Mínimo</h3>
+      <div *ngIf="produtosCriticos.length === 0" class="empty">Todos os saldos estão estáveis.</div>
+      <table class="simple-table" *ngIf="produtosCriticos.length > 0">
+        <thead>
+        <tr>
+          <th>Produto</th>
+          <th>Qtd Atual</th>
+          <th>Qtd Mínima</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let p of produtosCriticos">
+          <td>{{ p.nomeProduto }}</td>
+          <td class="text-danger">{{ p.quantidadeAtual }}</td>
+          <td>{{ p.quantidadeMinima }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+</div>
