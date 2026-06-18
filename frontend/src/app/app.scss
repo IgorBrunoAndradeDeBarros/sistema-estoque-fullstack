@@ -1,0 +1,147 @@
+$primary-color: #2c3e50;
+$danger-color: #e74c3c;
+$light-bg: #f8f9fa;
+$border-color: #e2e8f0;
+
+.dashboard-container {
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: $light-bg;
+  min-height: 100vh;
+
+  .main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid $border-color;
+    padding-bottom: 1rem;
+
+    h1 {
+      color: $primary-color;
+      margin: 0;
+    }
+
+    .badge-alerta {
+      background-color: $danger-color;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-weight: bold;
+    }
+  }
+}
+
+.dashboard-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  border: 1px solid $border-color;
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    h2 {
+      font-size: 1.25rem;
+      color: $primary-color;
+      margin: 0;
+    }
+  }
+}
+
+.alert-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  .alert-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background-color: #fff5f5;
+    border-left: 4px solid $danger-color;
+    margin-bottom: 0.5rem;
+    border-radius: 0 4px 4px 0;
+
+    p {
+      margin: 0;
+      color: #333;
+    }
+  }
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+
+  th, td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid $border-color;
+  }
+
+  th {
+    background-color: #f1f5f9;
+    color: $primary-color;
+  }
+
+  .text-danger {
+    color: $danger-color;
+    font-weight: bold;
+  }
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 1px solid $primary-color;
+  color: $primary-color;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    background: $primary-color;
+    color: white;
+  }
+}
+
+.btn-check {
+  background: transparent;
+  border: none;
+  color: #27ae60;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.badge-danger {
+  background-color: #fde8e8;
+  color: $danger-color;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.empty-state {
+  color: #718096;
+  text-align: center;
+  padding: 2rem;
+  font-style: italic;
+}
