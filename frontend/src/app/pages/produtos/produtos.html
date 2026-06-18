@@ -1,1 +1,34 @@
-<p>produtos works!</p>
+<div class="page-container">
+  <div class="page-header">
+    <h2>Gerenciamento de Produtos</h2>
+  </div>
+
+  <div class="card-list">
+    <table class="main-table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Categoria</th>
+        <th>Status</th>
+        <th>Ações</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let p of produtos">
+        <td>{{ p.id }}</td>
+        <td><strong>{{ p.nome }}</strong></td>
+        <td>{{ p.categoria }}</td>
+        <td>
+            <span class="badge" [class.badge-active]="p.ativo" [class.badge-inactive]="!p.ativo">
+              {{ p.ativo ? 'Ativo' : 'Inativo' }}
+            </span>
+        </td>
+        <td>
+          <button class="btn-delete" *ngIf="p.ativo" (click)="desativar(p.id)">Desativar</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a88d04e0-9984-46bc-8135-43e23a69d2ca" name="Changes" comment="feat: estrutura inicial do backend" />
+    <list default="true" id="a88d04e0-9984-46bc-8135-43e23a69d2ca" name="Changes" comment="feat: componente home page">
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/fornecedores/fornecedores.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/fornecedores/fornecedores.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/produtos/produtos.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/produtos/produtos.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/produtos/produtos.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/produtos/produtos.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/produtos/produtos.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/produtos/produtos.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -209,7 +214,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781647340904</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="feat: componente home page">
+      <option name="closed" value="true" />
+      <created>1781742364885</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1781742364885</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -231,6 +244,8 @@
     <MESSAGE value="angular" />
     <MESSAGE value="feat: organiza para receber frontend" />
     <MESSAGE value="feat: estrutura inicial do backend" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: estrutura inicial do backend" />
+    <MESSAGE value="feat: generate componentes e criação navbar sidebar" />
+    <MESSAGE value="feat: componente home page" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: componente home page" />
   </component>
 </project>

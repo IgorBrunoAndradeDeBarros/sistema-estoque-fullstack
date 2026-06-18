@@ -1,1 +1,13 @@
-<p>fornecedores works!</p>
+<div class="page-container">
+  <h2>Fornecedores Parceiros</h2>
+
+  <div class="grid-fornecedores">
+    <div class="card-fornecedor" *ngFor="let f of fornecedores">
+      <h3>{{ f.nome }}</h3>
+      <p><strong>CNPJ:</strong> {{ f.cnpj }}</p>
+      <span class="status-indicator" [class.active]="f.ativo">
+        {{ f.ativo ? 'Parceria Ativa' : 'Inativo' }}
+      </span>
+    </div>
+  </div>
+</div>

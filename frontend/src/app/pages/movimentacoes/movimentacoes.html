@@ -1,1 +1,16 @@
-<p>movimentacoes works!</p>
+<div class="page-container">
+  <h2>Histórico de Movimentações de Estoque</h2>
+
+  <div class="timeline">
+    <div class="timeline-item" *ngFor="let m of movimentacoes">
+      <div class="badge-tipo" [ngClass]="m.tipo.toLowerCase()">
+        {{ m.tipo }}
+      </div>
+      <div class="timeline-content">
+        <p><strong>Produto ID:</strong> {{ m.produtoId }}</p>
+        <p><strong>Quantidade:</strong> {{ m.quantidade }} unidades</p>
+        <small class="text-muted">{{ m.dataMovimentacao | date:'dd/MM/yyyy HH:mm' }}</small>
+      </div>
+    </div>
+  </div>
+</div>

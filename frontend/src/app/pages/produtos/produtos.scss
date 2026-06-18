@@ -1,0 +1,39 @@
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.main-table {
+  width: 100%;
+  background: white;
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  border: 1px solid #e2e8f0;
+
+  th, td { padding: 0.75rem 1rem; text-align: left; }
+  th { background: #f8fafc; color: #475569; border-bottom: 2px solid #e2e8f0; }
+  tr:border-bottom { border-bottom: 1px solid #e2e8f0; }
+
+  .badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    &-active { background: #dcfce7; color: #15803d; }
+    &-inactive { background: #fee2e2; color: #b91c1c; }
+  }
+
+  .btn-delete {
+    background: transparent;
+    border: 1px solid #ef4444;
+    color: #ef4444;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    &:hover { background: #ef4444; color: white; }
+  }
+}

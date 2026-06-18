@@ -1,9 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { EstoqueService } from '../../services/estoque.service';
+import { MovimentacaoDTO } from '../../models/estoque.models';
 
 @Component({
   selector: 'app-movimentacoes',
-  imports: [],
-  templateUrl: './movimentacoes.html',
-  styleUrl: './movimentacoes.scss',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './movimentacoes.component.html',
+  styleUrls: ['./movimentacoes.component.scss'],
 })
-export class Movimentacoes {}
+export class MovimentacoesComponent implements OnInit {
+  movimentacoes: MovimentacaoDTO[] = [];
+
+  constructor(private estoqueService: EstoqueService) {}
+
+  ngOnInit(): void {
+    this.estoqueService.listarMovimentacoes().subscribe((dados) => {
+      this.movimentacoes = dados;
+    });
+  }
+}
