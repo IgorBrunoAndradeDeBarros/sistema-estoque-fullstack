@@ -1,15 +1,18 @@
 <div class="page-container">
   <div class="page-header">
     <h2>Gerenciamento de Produtos</h2>
+    <button class="btn-primary" (click)="abrirFormulario()">+ Novo Produto</button>
   </div>
 
-  <div class="card-list">
+  <div class="card-list" *ngIf="!exibindoFormulario">
     <table class="main-table">
       <thead>
       <tr>
         <th>ID</th>
+        <th>Código</th>
         <th>Nome</th>
         <th>Categoria</th>
+        <th>Preço</th>
         <th>Status</th>
         <th>Ações</th>
       </tr>
@@ -17,8 +20,10 @@
       <tbody>
       <tr *ngFor="let p of produtos">
         <td>{{ p.id }}</td>
+        <td>{{ p.codigo }}</td>
         <td><strong>{{ p.nome }}</strong></td>
         <td>{{ p.categoria }}</td>
+        <td>{{ p.preco | currency:'BRL' }}</td>
         <td>
             <span class="badge" [class.badge-active]="p.ativo" [class.badge-inactive]="!p.ativo">
               {{ p.ativo ? 'Ativo' : 'Inativo' }}
@@ -30,5 +35,9 @@
       </tr>
       </tbody>
     </table>
+  </div>
+
+  <div *ngIf="exibindoFormulario">
+    <app-produto-form (aoSalvar)="fecharFormularioEAtualizar()" (aoCancelar)="exibindoFormulario = false"></app-produto-form>
   </div>
 </div>

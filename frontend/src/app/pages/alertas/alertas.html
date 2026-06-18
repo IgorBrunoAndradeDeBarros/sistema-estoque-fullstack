@@ -1,1 +1,16 @@
-<p>alertas works!</p>
+<div class="page-container">
+  <div class="page-header">
+    <h2>Central de Alertas e Notificações</h2>
+    <button class="btn-primary" (click)="marcarTodosLidos()">Marcar Todos como Lido</button>
+  </div>
+
+  <div class="alert-grid">
+    <div class="alert-card" *ngFor="let a of alertas" [class.lido]="a.lido">
+      <div class="alert-body">
+        <p>{{ a.mensagem }}</p>
+        <small>{{ a.dataCriacao | date:'dd/MM/yyyy HH:mm' }}</small>
+      </div>
+      <button class="btn-check" *ngIf="!a.lido" (click)="marcarLido(a.id)">✓ Marcar lido</button>
+    </div>
+  </div>
+</div>

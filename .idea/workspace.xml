@@ -5,9 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a88d04e0-9984-46bc-8135-43e23a69d2ca" name="Changes" comment="feat: componente home page">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/layout/navbar/navbar.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/layout/navbar/navbar.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/layout/sidebar/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/layout/sidebar/sidebar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/layout/sidebar/sidebar.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/layout/sidebar/sidebar.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/models/estoque.models.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/models/estoque.models.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/alertas/alertas.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/alertas/alertas.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/alertas/alertas.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/alertas/alertas.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/alertas/alertas.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/alertas/alertas.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/fornecedores/fornecedores.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/fornecedores/fornecedores.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/home/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/home/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/home/home.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/home/home.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/movimentacoes/movimentacoes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/movimentacoes/movimentacoes.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/produtos/produtos.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/produtos/produtos.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/produtos/produtos.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/produtos/produtos.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/produtos/produtos.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/produtos/produtos.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -222,7 +235,15 @@
       <option name="project" value="LOCAL" />
       <updated>1781742364885</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="feat: componente movimentações, produtos e fornecedores">
+      <option name="closed" value="true" />
+      <created>1781742499656</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1781742499656</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -246,6 +267,7 @@
     <MESSAGE value="feat: estrutura inicial do backend" />
     <MESSAGE value="feat: generate componentes e criação navbar sidebar" />
     <MESSAGE value="feat: componente home page" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: componente home page" />
+    <MESSAGE value="feat: componente movimentações, produtos e fornecedores" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: componente movimentações, produtos e fornecedores" />
   </component>
 </project>

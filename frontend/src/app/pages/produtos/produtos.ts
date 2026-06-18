@@ -2,16 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EstoqueService } from '../../services/estoque.service';
 import { ProdutoDTO } from '../../models/estoque.models';
+import { ProdutoFormComponent } from '../produto-form/produto-form';
+
 
 @Component({
   selector: 'app-produtos',
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './produtos.component.html',
-  styleUrls: ['./produtos.component.scss'],
+  imports: [CommonModule, ProdutoFormComponent],
+  templateUrl: './produtos.html',
+  styleUrls: ['./produtos.scss'],
 })
 export class ProdutosComponent implements OnInit {
   produtos: ProdutoDTO[] = [];
+  exibindoFormulario = false;
 
   constructor(private estoqueService: EstoqueService) {}
 
@@ -26,8 +29,17 @@ export class ProdutosComponent implements OnInit {
   }
 
   desativar(id?: number): void {
-    if (id) {
+    if (id && confirm('Tem certeza que deseja desativar este produto?')) {
       this.estoqueService.desativarProduto(id).subscribe(() => this.carregarProdutos());
     }
+  }
+
+  abrirFormulario(): void {
+    this.exibindoFormulario = true;
+  }
+
+  fecharFormularioEAtualizar(): void {
+    this.exibindoFormulario = false;
+    this.carregarProdutos();
   }
 }

@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
-import { ProdutosComponent } from './pages/produtos/produtos.component';
-import { FornecedoresComponent } from './pages/fornecedores/fornecedores.component';
-import { MovimentacoesComponent } from './pages/movimentacoes/movimentacoes.component';
-import { AlertasComponent } from './pages/alertas/alertas.component';
+import { HomeComponent } from './pages/home/home';
+import { ProdutosComponent } from './pages/produtos/produtos';
+import { FornecedoresComponent } from './pages/fornecedores/fornecedores';
+import { MovimentacoesComponent } from './pages/movimentacoes/movimentacoes';
+import { AlertasComponent } from './pages/alertas/alertas';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -11,5 +11,5 @@ export const routes: Routes = [
   { path: 'fornecedores', component: FornecedoresComponent },
   { path: 'movimentacoes', component: MovimentacoesComponent },
   { path: 'alertas', component: AlertasComponent },
-  { path: '**', redirectTo: '' }, // Fallback para home
+  { path: '**', redirectTo: '' },
 ];

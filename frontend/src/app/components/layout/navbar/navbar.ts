@@ -7,8 +7,8 @@ import { EstoqueService } from '../../../services/estoque.service';
   selector: 'app-navbar',
   standalone: true,
   imports: [CommonModule, RouterLink],
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss'],
+  templateUrl: './navbar.html',
+  styleUrls: ['./navbar.scss'],
 })
 export class NavbarComponent implements OnInit {
   contadorNaoLidos = 0;

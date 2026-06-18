@@ -7,8 +7,8 @@ import { MovimentacaoDTO } from '../../models/estoque.models';
   selector: 'app-movimentacoes',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './movimentacoes.component.html',
-  styleUrls: ['./movimentacoes.component.scss'],
+  templateUrl: './movimentacoes.html',
+  styleUrls: ['./movimentacoes.scss'],
 })
 export class MovimentacoesComponent implements OnInit {
   movimentacoes: MovimentacaoDTO[] = [];

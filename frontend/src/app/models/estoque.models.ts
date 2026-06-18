@@ -27,10 +27,12 @@ export interface MovimentacaoDTO {
 
 export interface ProdutoDTO {
   id?: number;
+  codigo: string;
   nome: string;
-  ativo: boolean;
   categoria: string;
-  preco?: number;
+  unidade: string;
+  preco: number;
+  ativo: boolean;
 }
 
 export interface ProdutoDetalheDTO extends ProdutoDTO {

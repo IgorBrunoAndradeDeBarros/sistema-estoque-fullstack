@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 import { EstoqueService } from './services/estoque.service';
 import { AlertaDTO, ProdutoSaldoDTO } from './models/estoque.models';
 import { RouterOutlet } from '@angular/router';
-import { Sidebar } from './components/layout/sidebar/sidebar';
-import { Navbar } from './components/layout/navbar/navbar';
+import { SidebarComponent } from './components/layout/sidebar/sidebar';
+import { NavbarComponent } from './components/layout/navbar/navbar';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, Sidebar, Navbar],
+  imports: [CommonModule, RouterOutlet, SidebarComponent, NavbarComponent],
   templateUrl: './app.html',
   styleUrls: ['./app.scss'],
 })

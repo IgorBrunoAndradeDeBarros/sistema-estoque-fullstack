@@ -7,8 +7,8 @@ import { ProdutoSaldoDTO, AlertaDTO } from '../../models/estoque.models';
   selector: 'app-home',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  templateUrl: './home.html',
+  styleUrls: ['./home.scss'],
 })
 export class HomeComponent implements OnInit {
   produtosCriticos: ProdutoSaldoDTO[] = [];

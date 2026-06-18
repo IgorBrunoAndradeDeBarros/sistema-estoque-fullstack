@@ -7,8 +7,8 @@ import { FornecedorDTO } from '../../models/estoque.models';
   selector: 'app-fornecedores',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './fornecedores.component.html',
-  styleUrls: ['./fornecedores.component.scss'],
+  templateUrl: './fornecedores.html',
+  styleUrls: ['./fornecedores.scss'],
 })
 export class FornecedoresComponent implements OnInit {
   fornecedores: FornecedorDTO[] = [];
