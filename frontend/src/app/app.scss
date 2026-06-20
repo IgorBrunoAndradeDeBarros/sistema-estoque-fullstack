@@ -13,6 +13,10 @@ $border-color: #e2e8f0;
 $text-main: #1e293b;
 $text-muted: #64748b;
 
+// Largura da sidebar, usada para compensar o position: fixed dela
+$sidebar-width: 260px;
+$navbar-height: 65px;
+
 * {
   box-sizing: border-box;
   font-family: 'Inter', sans-serif;
@@ -24,6 +28,28 @@ body {
   color: $text-main;
   -webkit-font-smoothing: antialiased;
 }
+
+// ===== CORREÇÃO DO LAYOUT =====
+// A .sidebar é position: fixed (definida no sidebar.scss), então ela sai do
+// fluxo normal do documento. Sem isso, o .content não sabe que ela existe
+// e renderiza por baixo dela.
+
+.app-wrapper {
+  min-height: 100vh;
+}
+
+.main-container {
+  display: flex;
+}
+
+.content {
+  flex: 1;
+  margin-left: $sidebar-width; // empurra o conteúdo para a direita da sidebar fixa
+  min-height: calc(100vh - #{$navbar-height});
+  width: calc(100% - #{$sidebar-width});
+}
+
+// ===== Estilos gerais de página (mantidos) =====
 
 .page-container {
   padding: 2rem;

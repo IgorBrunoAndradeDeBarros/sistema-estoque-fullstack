@@ -1,24 +1,167 @@
-.grid-fornecedores {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1rem;
+.fornecedores-page {
+  padding: 2rem;
+
+  .page-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin: 0 0 0.25rem;
+    }
+
+    .subtitle {
+      color: #64748b;
+      font-size: 0.9rem;
+      margin: 0;
+    }
+  }
+
+  .card {
+    background: white;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  }
+
+  .filtros {
+    display: flex;
+    gap: 0.75rem;
+    padding: 1rem;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+
+    input {
+      flex: 1;
+      min-width: 180px;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 0.55rem 0.8rem;
+      font-size: 0.9rem;
+      color: #1e293b;
+
+      &:focus {
+        outline: none;
+        border-color: #38bdf8;
+        box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+      }
+    }
+  }
+
+  .tabela-card {
+    overflow: hidden;
+  }
+
+  .estado {
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    color: #64748b;
+    font-size: 0.9rem;
+
+    &.erro { color: #ef4444; }
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+
+    thead {
+      background-color: #f8fafc;
+
+      th {
+        text-align: left;
+        padding: 0.8rem 1.1rem;
+        color: #64748b;
+        font-weight: 600;
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        border-bottom: 1px solid #e2e8f0;
+      }
+    }
+
+    tbody {
+      tr {
+        border-bottom: 1px solid #f1f5f9;
+        transition: background-color 0.15s ease;
+
+        &:last-child { border-bottom: none; }
+        &:hover { background-color: #f8fafc; }
+      }
+
+      td {
+        padding: 0.85rem 1.1rem;
+        color: #334155;
+      }
+
+      .nome { font-weight: 600; color: #1e293b; }
+    }
+
+    .col-acoes {
+      width: 1%;
+      white-space: nowrap;
+      text-align: right;
+    }
+  }
+
+  .status {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    color: #15803d;
+    background-color: #dcfce7;
+
+    &.inativo {
+      color: #64748b;
+      background-color: #f1f5f9;
+    }
+  }
+
+  .btn-icon {
+    background: none;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    margin-left: 0.4rem;
+    transition: border-color 0.15s ease;
+
+    &:hover { border-color: #38bdf8; }
+  }
 }
 
-.card-fornecedor {
+.btn {
+  border: none;
+  border-radius: 8px;
+  padding: 0.55rem 1.1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  &:disabled { opacity: 0.5; cursor: not-allowed; }
+}
+
+.btn-primary {
+  background-color: #1e293b;
+  color: white;
+
+  &:hover:not(:disabled) { background-color: #334155; }
+}
+
+.btn-ghost {
   background: white;
   border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  padding: 1.5rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  color: #1e293b;
 
-  h3 { color: #1e293b; font-size: 1.1rem; margin-bottom: 0.5rem; }
-  p { color: #64748b; font-size: 0.9rem; margin-bottom: 1rem; }
-
-  .status-indicator {
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: #94a3b8;
-    &.active { color: #16a34a; }
-  }
+  &:hover:not(:disabled) { border-color: #38bdf8; color: #0ea5e9; }
 }

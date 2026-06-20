@@ -33,5 +33,15 @@ services:
       postgres:
         condition: service_healthy
 
+  estoque-front:
+    build:
+      context: ./frontend
+      dockerfile: docker/Dockerfile
+    container_name: estoque-front
+    ports:
+      - "4200:80"
+    depends_on:
+      - estoque-api
+
 volumes:
   estoque-postgres-data:

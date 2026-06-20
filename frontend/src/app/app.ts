@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EstoqueService } from './services/estoque.service';
-import { AlertaDTO, ProdutoSaldoDTO } from './models/estoque.models';
 import { RouterOutlet } from '@angular/router';
+import { AlertaService } from './services/alerta';
+import { ProdutoService } from './services/produto';
+import { AlertaDTO, ProdutoSaldoDTO } from './models/estoque.models';
 import { SidebarComponent } from './components/layout/sidebar/sidebar';
 import { NavbarComponent } from './components/layout/navbar/navbar';
 
@@ -14,38 +15,39 @@ import { NavbarComponent } from './components/layout/navbar/navbar';
   styleUrls: ['./app.scss'],
 })
 export class AppComponent implements OnInit {
+  private readonly alertaService = inject(AlertaService);
+  private readonly produtoService = inject(ProdutoService);
+
   alertas: AlertaDTO[] = [];
   produtosCriticos: ProdutoSaldoDTO[] = [];
   contadorNaoLidos = 0;
-
-  constructor(private estoqueService: EstoqueService) {}
 
   ngOnInit(): void {
     this.carregarDashboard();
   }
 
   carregarDashboard(): void {
-    this.estoqueService.listarAlertas(false).subscribe((dados) => {
+    this.alertaService.listar(false).subscribe((dados: AlertaDTO[]) => {
       this.alertas = dados;
     });
 
-    this.estoqueService.contarAlertasNaoLidos().subscribe((dados) => {
-      this.contadorNaoLidos = dados.count;
+    this.alertaService.contarNaoLidos().subscribe((dados) => {
+      this.contadorNaoLidos = dados.total;
     });
 
-    this.estoqueService.listarProdutosCriticos().subscribe((dados) => {
+    this.produtoService.listarCriticos().subscribe((dados: ProdutoSaldoDTO[]) => {
       this.produtosCriticos = dados;
     });
   }
 
   marcarComoLido(id: number): void {
-    this.estoqueService.marcarAlertaComoLido(id).subscribe(() => {
+    this.alertaService.marcarComoLido(id).subscribe(() => {
       this.carregarDashboard();
     });
   }
 
   marcarTodosComoLidos(): void {
-    this.estoqueService.marcarTodosComoLidos().subscribe(() => {
+    this.alertaService.marcarTodosComoLidos().subscribe(() => {
       this.carregarDashboard();
     });
   }

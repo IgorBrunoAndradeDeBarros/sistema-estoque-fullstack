@@ -1,16 +1,77 @@
-<div class="page-container">
-  <div class="page-header">
-    <h2>Central de Alertas e Notificações</h2>
-    <button class="btn-primary" (click)="marcarTodosLidos()">Marcar Todos como Lido</button>
+<section class="alertas-page">
+  <header class="page-header">
+    <div>
+      <h1>Alertas</h1>
+      <p class="subtitle">Avisos de estoque mínimo e itens zerados</p>
+    </div>
+    <button
+      class="btn btn-ghost"
+      type="button"
+      (click)="marcarTodosComoLidos()"
+      [disabled]="totalNaoLidos === 0"
+    >
+      Marcar todos como lidos
+    </button>
+  </header>
+
+  <div class="filtros">
+    <button
+      type="button"
+      class="chip"
+      [class.active]="filtroAtivo === 'todos'"
+      (click)="filtrarPor('todos')"
+    >
+      Todos
+    </button>
+    <button
+      type="button"
+      class="chip"
+      [class.active]="filtroAtivo === 'nao-lidos'"
+      (click)="filtrarPor('nao-lidos')"
+    >
+      Não lidos
+    </button>
+    <button
+      type="button"
+      class="chip"
+      [class.active]="filtroAtivo === 'lidos'"
+      (click)="filtrarPor('lidos')"
+    >
+      Lidos
+    </button>
   </div>
 
-  <div class="alert-grid">
-    <div class="alert-card" *ngFor="let a of alertas" [class.lido]="a.lido">
-      <div class="alert-body">
-        <p>{{ a.mensagem }}</p>
-        <small>{{ a.dataCriacao | date:'dd/MM/yyyy HH:mm' }}</small>
-      </div>
-      <button class="btn-check" *ngIf="!a.lido" (click)="marcarLido(a.id)">✓ Marcar lido</button>
+  <div class="card">
+    <div class="estado" *ngIf="carregando">Carregando alertas...</div>
+    <div class="estado erro" *ngIf="erro && !carregando">{{ erro }}</div>
+    <div class="estado vazio" *ngIf="!carregando && !erro && alertas.length === 0">
+      Nenhum alerta encontrado para este filtro.
     </div>
+
+    <ul class="lista-alertas" *ngIf="!carregando && alertas.length > 0">
+      <li *ngFor="let alerta of alertas" class="item" [class.nao-lido]="!alerta.lido">
+        <span class="indicador" [class.zerado]="alerta.tipo === 'ESTOQUE_ZERADO'"></span>
+
+        <div class="conteudo">
+          <div class="linha-topo">
+            <span class="tipo-badge" [class.zerado]="alerta.tipo === 'ESTOQUE_ZERADO'">
+              {{ tipoLabel[alerta.tipo] }}
+            </span>
+            <span class="produto">{{ alerta.nomeProduto }}</span>
+          </div>
+          <p class="mensagem">{{ alerta.mensagem }}</p>
+          <span class="data">{{ alerta.criadoEm | date: 'dd/MM/yyyy HH:mm' }}</span>
+        </div>
+
+        <button
+          type="button"
+          class="btn-link"
+          *ngIf="!alerta.lido"
+          (click)="marcarComoLido(alerta)"
+        >
+          Marcar como lido
+        </button>
+      </li>
+    </ul>
   </div>
-</div>
+</section>

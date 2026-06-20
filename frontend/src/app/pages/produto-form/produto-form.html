@@ -1,58 +1,112 @@
-<div class="form-card">
-  <h3>Cadastrar Novo Produto</h3>
+<section class="produto-form-page">
+  <header class="page-header">
+    <h1>{{ modoEdicao ? 'Editar produto' : 'Novo produto' }}</h1>
+    <p class="subtitle">
+      {{ modoEdicao ? 'Atualize os dados do produto' : 'Preencha os dados para cadastrar um novo produto' }}
+    </p>
+  </header>
 
-  <form [formGroup]="produtoForm" (ngSubmit)="salvar()">
+  <div class="card">
+    <div class="estado" *ngIf="carregando">Carregando dados do produto...</div>
 
-    <div class="form-grid">
-      <div class="form-group">
-        <label>Código do Produto *</label>
-        <input type="text" formControlName="codigo" placeholder="Ex: SKU-001">
-        <small class="text-danger" *ngIf="produtoForm.get('codigo')?.invalid && produtoForm.get('codigo')?.touched">
-          Código é obrigatório.
-        </small>
+    <form class="form-grid" [formGroup]="form" (ngSubmit)="salvar()" *ngIf="!carregando">
+      <div class="campo">
+        <label for="codigo">Código</label>
+        <input id="codigo" type="text" formControlName="codigo" placeholder="Ex: PRD-0001" />
+        <span class="erro-campo" *ngIf="campo.codigo.touched && campo.codigo.invalid">
+          Informe o código do produto.
+        </span>
       </div>
 
-      <div class="form-group">
-        <label>Nome do Produto *</label>
-        <input type="text" formControlName="nome" placeholder="Ex: Notebook Dell">
-        <small class="text-danger" *ngIf="produtoForm.get('nome')?.invalid && produtoForm.get('nome')?.touched">
-          Nome é obrigatório.
-        </small>
+      <div class="campo">
+        <label for="categoria">Categoria</label>
+        <input id="categoria" type="text" formControlName="categoria" placeholder="Ex: Bebidas" />
+        <span class="erro-campo" *ngIf="campo.categoria.touched && campo.categoria.invalid">
+          Informe a categoria.
+        </span>
       </div>
 
-      <div class="form-group">
-        <label>Categoria *</label>
-        <input type="text" formControlName="categoria" placeholder="Ex: Eletrônicos">
-        <small class="text-danger" *ngIf="produtoForm.get('categoria')?.invalid && produtoForm.get('categoria')?.touched">
-          Categoria é obrigatória.
-        </small>
+      <div class="campo campo-full">
+        <label for="nome">Nome</label>
+        <input id="nome" type="text" formControlName="nome" placeholder="Ex: Refrigerante Cola 2L" />
+        <span class="erro-campo" *ngIf="campo.nome.touched && campo.nome.invalid">
+          Informe o nome (mínimo 3 caracteres).
+        </span>
       </div>
 
-      <div class="form-group">
-        <label>Unidade de Medida *</label>
-        <select formControlName="unidade">
-          <option value="UN">Unidade (UN)</option>
-          <option value="CX">Caixa (CX)</option>
-          <option value="KG">Quilo (KG)</option>
-          <option value="LT">Litro (LT)</option>
+      <div class="campo campo-full">
+        <label for="descricao">Descrição</label>
+        <textarea
+          id="descricao"
+          formControlName="descricao"
+          rows="3"
+          placeholder="Detalhes adicionais sobre o produto"
+        ></textarea>
+      </div>
+
+      <div class="campo">
+        <label for="unidade">Unidade</label>
+        <select id="unidade" formControlName="unidade">
+          <option *ngFor="let u of unidades" [value]="u">{{ u }}</option>
         </select>
       </div>
 
-      <div class="form-group">
-        <label>Preço Base (R$) *</label>
-        <input type="number" formControlName="preco" step="0.01">
-        <small class="text-danger" *ngIf="produtoForm.get('preco')?.invalid && produtoForm.get('preco')?.touched">
-          Preço inválido.
-        </small>
+      <div class="campo">
+        <label for="precoCusto">Preço de custo</label>
+        <input
+          id="precoCusto"
+          type="number"
+          step="0.01"
+          min="0"
+          formControlName="precoCusto"
+        />
+        <span class="erro-campo" *ngIf="campo.precoCusto.touched && campo.precoCusto.invalid">
+          Informe um preço de custo válido.
+        </span>
       </div>
-    </div>
 
-    <div class="form-actions">
-      <button type="button" class="btn-secondary" (click)="cancelar()" [disabled]="salvando">Cancelar</button>
-      <button type="submit" class="btn-primary" [disabled]="produtoForm.invalid || salvando">
-        {{ salvando ? 'Salvando...' : 'Salvar Produto' }}
-      </button>
-    </div>
+      <div class="campo">
+        <label for="estoqueMin">Estoque mínimo</label>
+        <input
+          id="estoqueMin"
+          type="number"
+          min="0"
+          formControlName="estoqueMin"
+        />
+        <span class="erro-campo" *ngIf="campo.estoqueMin.touched && campo.estoqueMin.invalid">
+          Informe o estoque mínimo.
+        </span>
+      </div>
 
-  </form>
-</div>
+      <div class="campo">
+        <label for="fornecedorId">ID do fornecedor</label>
+        <input
+          id="fornecedorId"
+          type="number"
+          min="1"
+          formControlName="fornecedorId"
+          placeholder="Ex: 1"
+        />
+        <span class="erro-campo" *ngIf="campo.fornecedorId.touched && campo.fornecedorId.invalid">
+          Informe o ID do fornecedor.
+        </span>
+      </div>
+
+      <div class="campo campo-checkbox" *ngIf="modoEdicao">
+        <label class="checkbox-label">
+          <input type="checkbox" formControlName="ativo" />
+          Produto ativo
+        </label>
+      </div>
+
+      <p class="erro-geral" *ngIf="erro">{{ erro }}</p>
+
+      <div class="acoes campo-full">
+        <button type="button" class="btn btn-ghost" (click)="cancelar()">Cancelar</button>
+        <button type="submit" class="btn btn-primary" [disabled]="salvando">
+          {{ salvando ? 'Salvando...' : 'Salvar produto' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</section>

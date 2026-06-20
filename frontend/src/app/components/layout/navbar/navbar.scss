@@ -1,65 +1,113 @@
 .navbar {
-  height: 60px;
-  background-color: #1e293b;
-  color: white;
+  height: 65px;
+  background-color: #0f172a; // Slate 900 mais moderno
+  color: #f8fafc;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 2rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  z-index: 10;
+  border-bottom: 1px solid #1e293b;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 
   .logo {
-    font-size: 1.25rem;
+    font-size: 1.4rem;
     font-weight: 300;
-    .brand { font-weight: 700; color: #38bdf8; }
+    letter-spacing: 0.5px;
+
+    .brand {
+      font-weight: 800;
+      color: #38bdf8; // Neon Cyan
+      text-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
+    }
   }
 
   .actions {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 2rem;
   }
 
   .nav-alert-btn {
-    background: transparent;
-    border: none;
-    color: #cbd5e1;
+    background: #1e293b;
+    border: 1px solid #334155;
+    color: #94a3b8;
     cursor: pointer;
     position: relative;
-    font-size: 0.95rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    justify-content: center;
+    transition: all 0.2s ease;
 
-    &:hover { color: white; }
+    &:hover {
+      color: #38bdf8;
+      border-color: #38bdf8;
+      background: rgba(56, 189, 248, 0.05);
+    }
+
+    .icon {
+      font-size: 1.2rem;
+    }
 
     .badge {
-      background-color: #ef4444;
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      background-color: #ef4444; // Vermelho vibrante
       color: white;
-      font-size: 0.75rem;
-      padding: 0.15rem 0.4rem;
+      font-size: 0.7rem;
+      min-width: 18px;
+      height: 18px;
+      padding: 0 4px;
       border-radius: 10px;
-      font-weight: bold;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #0f172a;
     }
   }
 
   .user-profile {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 0.9rem;
+    gap: 0.75rem;
+    padding-left: 1rem;
+    border-left: 1px solid #1e293b;
 
     .avatar {
-      width: 32px;
-      height: 32px;
-      background-color: #38bdf8;
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #1e293b;
-      font-weight: bold;
+      color: #0f172a;
+      font-weight: 700;
+      font-size: 0.95rem;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+    }
+
+    .user-info {
+      display: flex;
+      flex-direction: column;
+
+      .username {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #e2e8f0;
+      }
+
+      .role {
+        font-size: 0.75rem;
+        color: #64748b;
+      }
     }
   }
 }

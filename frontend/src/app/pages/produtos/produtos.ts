@@ -1,45 +1,82 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EstoqueService } from '../../services/estoque.service';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ProdutoDTO } from '../../models/estoque.models';
-import { ProdutoFormComponent } from '../produto-form/produto-form';
-
+import { ProdutoService } from '../../services/produto';
 
 @Component({
   selector: 'app-produtos',
   standalone: true,
-  imports: [CommonModule, ProdutoFormComponent],
+  imports: [CommonModule, FormsModule],
   templateUrl: './produtos.html',
   styleUrls: ['./produtos.scss'],
 })
 export class ProdutosComponent implements OnInit {
   produtos: ProdutoDTO[] = [];
-  exibindoFormulario = false;
+  carregando = false;
+  erro = '';
 
-  constructor(private estoqueService: EstoqueService) {}
+  filtroNome = '';
+  filtroCategoria = '';
+  filtroAtivo: 'todos' | 'ativos' | 'inativos' = 'ativos';
+
+  constructor(
+    private produtoService: ProdutoService,
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
-    this.carregarProdutos();
+    this.carregar();
   }
 
-  carregarProdutos(): void {
-    this.estoqueService.listarProdutos().subscribe((dados) => {
-      this.produtos = dados;
-    });
+  carregar(): void {
+    this.carregando = true;
+    this.erro = '';
+    const ativo = this.filtroAtivo === 'todos' ? undefined : this.filtroAtivo === 'ativos';
+
+    this.produtoService
+      .listar(this.filtroNome || undefined, ativo, this.filtroCategoria || undefined)
+      .subscribe({
+        next: (dados) => {
+          this.produtos = dados;
+          this.carregando = false;
+        },
+        error: () => {
+          this.erro = 'Não foi possível carregar os produtos.';
+          this.carregando = false;
+        },
+      });
   }
 
-  desativar(id?: number): void {
-    if (id && confirm('Tem certeza que deseja desativar este produto?')) {
-      this.estoqueService.desativarProduto(id).subscribe(() => this.carregarProdutos());
-    }
+  buscar(): void {
+    this.carregar();
   }
 
-  abrirFormulario(): void {
-    this.exibindoFormulario = true;
+  limparFiltros(): void {
+    this.filtroNome = '';
+    this.filtroCategoria = '';
+    this.filtroAtivo = 'ativos';
+    this.carregar();
   }
 
-  fecharFormularioEAtualizar(): void {
-    this.exibindoFormulario = false;
-    this.carregarProdutos();
+  novo(): void {
+    this.router.navigate(['/produtos/novo']);
+  }
+
+  editar(produto: ProdutoDTO): void {
+    this.router.navigate(['/produtos', produto.id, 'editar']);
+  }
+
+  detalhar(produto: ProdutoDTO): void {
+    this.router.navigate(['/produtos', produto.id]);
+  }
+
+  desativar(produto: ProdutoDTO): void {
+    if (!produto.id) return;
+    const confirmado = confirm(`Desativar o produto "${produto.nome}"?`);
+    if (!confirmado) return;
+
+    this.produtoService.desativar(produto.id).subscribe(() => this.carregar());
   }
 }

@@ -1,55 +1,91 @@
-export interface AlertaDTO {
-  id: number;
-  mensagem: string;
-  lido: boolean;
-  dataCriacao: string;
-}
+// ==========================================
+// ENUMS
+// ==========================================
+
+export type TipoAlerta = 'ESTOQUE_MINIMO' | 'ESTOQUE_ZERADO';
+
+export type TipoMovimentacao = 'ENTRADA' | 'SAIDA' | 'AJUSTE';
+
+export type Unidade = 'UN' | 'KG' | 'LT' | 'CX' | 'PCT';
+
+// ==========================================
+// DTOS
+// ==========================================
 
 export interface AlertaCountDTO {
-  count: number;
+  total: number;
+}
+
+export interface AlertaDTO {
+  id: number;
+  produtoId: number;
+  nomeProduto: string;
+  tipo: TipoAlerta;
+  mensagem: string;
+  lido: boolean;
+  criadoEm: string; // LocalDateTime mapeado como string ISO
 }
 
 export interface FornecedorDTO {
   id?: number;
-  nome: string;
+  razaoSocial: string;
   cnpj: string;
-  ativo?: boolean;
+  email: string;
+  telefone: string;
+  ativo: boolean;
 }
 
 export interface MovimentacaoDTO {
   id?: number;
+  tipo: TipoMovimentacao;
   produtoId: number;
   quantidade: number;
-  tipo: 'ENTRADA' | 'SAIDA' | 'AJUSTE';
-  dataMovimentacao?: string;
-  observacao?: string;
+  custoUnit: number;
+  docRef: string;
+  motivo: string;
+  dataHora: string; // LocalDateTime mapeado como string ISO
 }
 
 export interface ProdutoDTO {
   id?: number;
   codigo: string;
   nome: string;
+  descricao: string;
   categoria: string;
-  unidade: string;
-  preco: number;
+  unidade: Unidade;
+  precoCusto: number;
+  estoqueMin: number;
+  fornecedorId: number;
   ativo: boolean;
 }
 
-export interface ProdutoDetalheDTO extends ProdutoDTO {
-  descricao?: string;
-  fornecedorId?: number;
+export interface ProdutoDetalheDTO {
+  id: number;
+  codigo: string;
+  nome: string;
+  descricao: string;
+  categoria: string;
+  unidade: Unidade;
+  precoCusto: number;
+  estoqueMin: number;
+  ativo: boolean;
+  nomeFornecedor: string;
+  quantidade: number;
+  custoMedio: number;
 }
 
 export interface ProdutoSaldoDTO {
-  produtoId: number;
-  nomeProduto: string;
+  id: number;
+  codigo: string;
+  nome: string;
+  estoqueMin: number;
   quantidadeAtual: number;
-  quantidadeMinima: number;
 }
 
 export interface SaldoDTO {
-  id: number;
   produtoId: number;
+  codigoProduto: string;
+  nomeProduto: string;
   quantidade: number;
-  atualizadoEm: string;
+  custoMedio: number;
 }

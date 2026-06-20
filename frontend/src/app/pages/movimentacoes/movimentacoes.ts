@@ -1,23 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EstoqueService } from '../../services/estoque.service';
+import { RouterLink } from '@angular/router';
+import { MovimentacaoService } from '../../services/movimentacao';
 import { MovimentacaoDTO } from '../../models/estoque.models';
 
 @Component({
   selector: 'app-movimentacoes',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './movimentacoes.html',
   styleUrls: ['./movimentacoes.scss'],
 })
 export class MovimentacoesComponent implements OnInit {
-  movimentacoes: MovimentacaoDTO[] = [];
+  private readonly movimentacaoService = inject(MovimentacaoService);
 
-  constructor(private estoqueService: EstoqueService) {}
+  movimentacoes: MovimentacaoDTO[] = [];
+  carregando = false;
+  erro = '';
 
   ngOnInit(): void {
-    this.estoqueService.listarMovimentacoes().subscribe((dados) => {
-      this.movimentacoes = dados;
+    this.carregar();
+  }
+
+  carregar(): void {
+    this.carregando = true;
+    this.erro = '';
+    this.movimentacaoService.listar().subscribe({
+      next: (dados: MovimentacaoDTO[]) => {
+        this.movimentacoes = dados;
+        this.carregando = false;
+      },
+      error: () => {
+        this.erro = 'Não foi possível carregar as movimentações.';
+        this.carregando = false;
+      },
     });
   }
 }

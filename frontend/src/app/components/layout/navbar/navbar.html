@@ -1,15 +1,20 @@
 <header class="navbar">
   <div class="logo">
-    <span class="brand">JIF</span> Stock
+    <span class="brand"></span> Stock
   </div>
+
   <div class="actions">
-    <button class="nav-alert-btn" routerLink="/alertas">
-      🔔 Alertas
+    <button class="nav-alert-btn" routerLink="/alertas" title="Visualizar Alertas">
+      <span class="icon">🔔</span>
       <span class="badge" *ngIf="contadorNaoLidos > 0">{{ contadorNaoLidos }}</span>
     </button>
+
     <div class="user-profile">
-      <span class="avatar">U</span>
-      <span>Usuário</span>
+      <div class="avatar">U</div>
+      <div class="user-info">
+        <span class="username">Usuário</span>
+        <span class="role">Developer</span>
+      </div>
     </div>
   </div>
 </header>

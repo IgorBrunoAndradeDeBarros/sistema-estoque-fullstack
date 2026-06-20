@@ -1,11 +1,36 @@
 <aside class="sidebar">
   <nav class="sidebar-nav">
     <ul>
-      <li><a routerLink="/" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active">Dashboard</a></li>
-      <li><a routerLink="/produtos" routerLinkActive="active">Produtos</a></li>
-      <li><a routerLink="/fornecedores" routerLinkActive="active">Fornecedores</a></li>
-      <li><a routerLink="/movimentacoes" routerLinkActive="active">Movimentações</a></li>
-      <li><a routerLink="/alertas" routerLinkActive="active">Alertas</a></li>
+      <li>
+        <a routerLink="/" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active">
+          <span class="icon">📊</span>
+          <span class="label">Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/produtos" routerLinkActive="active">
+          <span class="icon">📦</span>
+          <span class="label">Produtos</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/fornecedores" routerLinkActive="active">
+          <span class="icon">🤝</span>
+          <span class="label">Fornecedores</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/movimentacoes" routerLinkActive="active">
+          <span class="icon">🔄</span>
+          <span class="label">Movimentações</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/alertas" routerLinkActive="active">
+          <span class="icon">⚠️</span>
+          <span class="label">Alertas</span>
+        </a>
+      </li>
     </ul>
   </nav>
 </aside>
