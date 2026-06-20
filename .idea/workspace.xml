@@ -4,76 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a88d04e0-9984-46bc-8135-43e23a69d2ca" name="Changes" comment="feat: ajuste local">
-      <change afterPath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/prettier.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/docker/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/docker/nginx.conf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/fornecedor-form/fornecedor-form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/fornecedor-form/fornecedor-form.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/fornecedor-form/fornecedor-form.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/fornecedor-form/fornecedor-form.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/home/components/alertas-widget/alertas-widget.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/home/components/alertas-widget/alertas-widget.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/home/components/alertas-widget/alertas-widget.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/home/components/alertas-widget/alertas-widget.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/home/components/home-component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/home/components/home-component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/home/components/home-component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/home/components/saldos-list/saldos-list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/home/components/saldos-list/saldos-list.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/home/components/saldos-list/saldos-list.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/movimentacao-form/movimentacao-form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/movimentacao-form/movimentacao-form.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/movimentacao-form/movimentacao-form.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/pages/movimentacao-form/movimentacao-form.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/services/alerta.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/services/alerta.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/services/fornecedor.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/services/fornecedor.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/services/movimentacao.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/services/movimentacao.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/services/produto.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/services/produto.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/services/saldo.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/app/services/saldo.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/environments/environment.development.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/environments/environment.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dockerignore" beforeDir="false" afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
+    <list default="true" id="a88d04e0-9984-46bc-8135-43e23a69d2ca" name="Changes" comment="feat: CORS BACK E ADD FRONT NO  docker-compose.yml">
+      <change afterPath="$PROJECT_DIR$/backend/api.collection/Estoque-API.postman_collection.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/massa-de-testes.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/layout/navbar/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/layout/navbar/navbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/layout/navbar/navbar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/layout/navbar/navbar.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/layout/navbar/navbar.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/layout/navbar/navbar.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/layout/sidebar/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/layout/sidebar/sidebar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/components/layout/sidebar/sidebar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/components/layout/sidebar/sidebar.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/models/estoque.models.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/models/estoque.models.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/alertas/alertas.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/alertas/alertas.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/alertas/alertas.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/alertas/alertas.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/alertas/alertas.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/alertas/alertas.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/fornecedores/fornecedores.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/fornecedores/fornecedores.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/fornecedores/fornecedores.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/fornecedores/fornecedores.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/fornecedores/fornecedores.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/fornecedores/fornecedores.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/home/home.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/home/home.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/home/home.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/home/components/saldos-list/saldos-list.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/home/home.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/movimentacoes/movimentacoes.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/movimentacoes/movimentacoes.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/movimentacoes/movimentacoes.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/movimentacoes/movimentacoes.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/movimentacoes/movimentacoes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/movimentacoes/movimentacoes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/produto-form/produto-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/produto-form/produto-form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/produto-form/produto-form.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/produto-form/produto-form.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/produto-form/produto-form.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/produto-form/produto-form.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/produtos/produtos.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/produtos/produtos.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/produtos/produtos.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/produtos/produtos.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/produtos/produtos.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/produtos/produtos.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/services/estoque.service.ts" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +15,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="179" />
+    <option name="cachedIndexableFilesCount" value="211" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="Git.Settings">
@@ -115,8 +49,11 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/IgorBrunoAndradeDeBarros/sistema-estoque-fullstack.git&quot;,
-    &quot;accountId&quot;: &quot;87077ed1-b004-4598-bf93-14944cf03919&quot;
+    &quot;accountId&quot;: &quot;681a183d-e931-43d1-9cc9-090de655d979&quot;
   }
+}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
 }</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -155,7 +92,7 @@
     "javascript.preferred.runtime.type.id": "node",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/DEV/sistema-estoque-fullstack/frontend/docker",
+    "last_opened_file_path": "C:/DEV/sistema-estoque-fullstack/backend",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -169,16 +106,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\DEV\sistema-estoque-fullstack\backend" />
+      <recent name="C:\DEV\sistema-estoque-fullstack\backend\api.collection" />
       <recent name="C:\DEV\sistema-estoque-fullstack\frontend\docker" />
       <recent name="C:\DEV\sistema-estoque-fullstack\frontend" />
       <recent name="C:\DEV\sistema-estoque-fullstack\frontend\src\app\pages" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\DEV\sistema-estoque-fullstack\frontend" />
-      <recent name="C:\DEV\sistema-estoque-fullstack\frontend\src\app\pages\home\components\estoque-critico" />
-      <recent name="C:\DEV\sistema-estoque-fullstack\frontend\src\app\pages\home\components" />
-      <recent name="C:\DEV\sistema-estoque-fullstack\frontend\src\app\pages\home" />
-      <recent name="C:\DEV\sistema-estoque-fullstack\frontend\src\app" />
+      <recent name="C:\DEV\sistema-estoque-fullstack\frontend\src\app\components\layout\services" />
+      <recent name="C:\DEV\sistema-estoque-fullstack\frontend\src\app\funcionalidades\movimentacoes\movimentacoes-listagem" />
+      <recent name="C:\DEV\sistema-estoque-fullstack\frontend\src\app\funcionalidades\movimentacoes\services" />
+      <recent name="C:\DEV\sistema-estoque-fullstack\frontend\src\app\funcionalidades\movimentacoes" />
+      <recent name="C:\DEV\sistema-estoque-fullstack\frontend\src\app\funcionalidades\fornecedores" />
     </key>
   </component>
   <component name="RunManager">
@@ -241,6 +180,9 @@
       <workItem from="1781739170717" duration="2903000" />
       <workItem from="1781873116805" duration="689000" />
       <workItem from="1781971464748" duration="6355000" />
+      <workItem from="1781985466489" duration="615000" />
+      <workItem from="1782009963325" duration="1256000" />
+      <workItem from="1782011342368" duration="4717000" />
     </task>
     <task id="LOCAL-00001" summary="estrutura inicial do projeto">
       <option name="closed" value="true" />
@@ -322,7 +264,23 @@
       <option name="project" value="LOCAL" />
       <updated>1781746289102</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="feat: front alert cadastros docker front">
+      <option name="closed" value="true" />
+      <created>1781980537364</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1781980537364</updated>
+    </task>
+    <task id="LOCAL-00012" summary="feat: CORS BACK E ADD FRONT NO  docker-compose.yml">
+      <option name="closed" value="true" />
+      <created>1782014385053</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1782014385054</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -349,6 +307,10 @@
     <MESSAGE value="feat: componente movimentações, produtos e fornecedores" />
     <MESSAGE value="feat: ajuste local" />
     <MESSAGE value="feat: ajuste local" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: ajuste local" />
+    <MESSAGE value="feat: front alert cadastros" />
+    <MESSAGE value="feat: front alert cadastros docker front" />
+    <MESSAGE value="feat: CORS BACK E ADD FRONT NO  docker-compose.yml" />
+    <MESSAGE value="refactor: melhora o design das páginas e a estruturação do projeto" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: melhora o design das páginas e a estruturação do projeto" />
   </component>
 </project>

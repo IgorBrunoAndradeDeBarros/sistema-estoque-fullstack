@@ -2,7 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { AlertaService } from '../../../../services/alerta';
-import { AlertaDTO } from '../../../../models/estoque.models';
+import { AlertaDTO } from '../../../../enums/estoque.models';
 
 @Component({
   selector: 'app-alertas-widget',

@@ -2,8 +2,9 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MovimentacaoDTO, TipoMovimentacao } from '../../models/estoque.models';
-import { MovimentacaoService } from '../../services/movimentacao';
+import { MovimentacaoService } from '../services/movimentacao';
+import { TipoMovimentacao } from '../../../enums/enums';
+import { MovimentacaoDTO } from '../store/Movimentacao.dto';
 
 @Component({
   selector: 'app-movimentacao-form',

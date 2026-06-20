@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   postgres:
     image: postgres:17
@@ -20,8 +18,8 @@ services:
 
   estoque-api:
     build:
-      context: .
-      dockerfile: backend/src/main/docker/Dockerfile.jvm
+      context: ./backend
+      dockerfile: src/main/docker/Dockerfile.jvm
     container_name: estoque-api
     ports:
       - "8080:8080"

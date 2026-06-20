@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { SaldoDTO } from '../models/estoque.models';
+import { SaldoDTO } from '../enums/estoque.models';
 
 @Injectable({
   providedIn: 'root',

@@ -1,75 +1,103 @@
 .navbar {
   height: 65px;
-  background-color: #0f172a; // Slate 900 mais moderno
-  color: #f8fafc;
+  background-color: #18181b;
+  color: #fafafa;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 2rem;
-  border-bottom: 1px solid #1e293b;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  padding: 0 1.5rem;
+  border-bottom: 1px solid #27272a;
   position: sticky;
   top: 0;
   z-index: 100;
 
-  .logo {
-    font-size: 1.4rem;
-    font-weight: 300;
-    letter-spacing: 0.5px;
+  .logo-section {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
 
-    .brand {
-      font-weight: 800;
-      color: #38bdf8; // Neon Cyan
-      text-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
+    .toggle-btn {
+      background: transparent;
+      border: none;
+      color: #a1a1aa;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.4rem;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+
+      svg {
+        width: 22px;
+        height: 22px;
+      }
+
+      &:hover {
+        color: #fafafa;
+        background-color: #27272a;
+      }
+    }
+
+    .logo {
+      font-size: 1.3rem;
+      font-weight: 300;
+      letter-spacing: 0.5px;
+
+      .brand {
+        font-weight: 600;
+        color: #fafafa;
+      }
     }
   }
 
   .actions {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 1.5rem;
   }
 
   .nav-alert-btn {
-    background: #1e293b;
-    border: 1px solid #334155;
-    color: #94a3b8;
+    background: #27272a;
+    border: 1px solid #3f3f46;
+    color: #a1a1aa;
     cursor: pointer;
     position: relative;
-    width: 40px;
-    height: 40px;
-    border-radius: 8px;
+    width: 38px;
+    height: 38px;
+    border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.2s ease;
 
-    &:hover {
-      color: #38bdf8;
-      border-color: #38bdf8;
-      background: rgba(56, 189, 248, 0.05);
+    svg {
+      width: 18px;
+      height: 18px;
     }
 
-    .icon {
-      font-size: 1.2rem;
+    &:hover {
+      color: #fafafa;
+      border-color: #52525b;
+      background: #3f3f46;
     }
 
     .badge {
       position: absolute;
-      top: -6px;
-      right: -6px;
-      background-color: #ef4444; // Vermelho vibrante
+      top: -5px;
+      right: -5px;
+      background-color: #dc2626;
       color: white;
       font-size: 0.7rem;
       min-width: 18px;
       height: 18px;
       padding: 0 4px;
       border-radius: 10px;
-      font-weight: 700;
+      font-weight: 600;
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 2px solid #0f172a;
+      border: 2px solid #18181b;
     }
   }
 
@@ -77,21 +105,21 @@
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    padding-left: 1rem;
-    border-left: 1px solid #1e293b;
+    padding-left: 1.5rem;
+    border-left: 1px solid #27272a;
 
     .avatar {
-      width: 36px;
-      height: 36px;
-      background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
+      width: 34px;
+      height: 34px;
+      background: #27272a;
+      border: 1px solid #3f3f46;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #0f172a;
-      font-weight: 700;
-      font-size: 0.95rem;
-      box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+      color: #fafafa;
+      font-weight: 600;
+      font-size: 0.9rem;
     }
 
     .user-info {
@@ -99,14 +127,14 @@
       flex-direction: column;
 
       .username {
-        font-size: 0.9rem;
-        font-weight: 600;
-        color: #e2e8f0;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: #e4e4e7;
       }
 
       .role {
-        font-size: 0.75rem;
-        color: #64748b;
+        font-size: 0.7rem;
+        color: #a1a1aa;
       }
     }
   }

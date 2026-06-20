@@ -2,10 +2,11 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { AlertaService } from './services/alerta';
-import { ProdutoService } from './services/produto';
-import { AlertaDTO, ProdutoSaldoDTO } from './models/estoque.models';
+import { ProdutoService } from './funcionalidades/produtos/services/produto';
 import { SidebarComponent } from './components/layout/sidebar/sidebar';
 import { NavbarComponent } from './components/layout/navbar/navbar';
+import { AlertaDTO } from './enums/estoque.models';
+import { ProdutoSaldoDTO } from './funcionalidades/produtos/store/Produto.dto';
 
 @Component({
   selector: 'app-root',
@@ -21,6 +22,7 @@ export class AppComponent implements OnInit {
   alertas: AlertaDTO[] = [];
   produtosCriticos: ProdutoSaldoDTO[] = [];
   contadorNaoLidos = 0;
+  sidebarAberta = true;
 
   ngOnInit(): void {
     this.carregarDashboard();
@@ -50,5 +52,9 @@ export class AppComponent implements OnInit {
     this.alertaService.marcarTodosComoLidos().subscribe(() => {
       this.carregarDashboard();
     });
+  }
+
+  alternarSidebar(): void {
+    this.sidebarAberta = !this.sidebarAberta;
   }
 }

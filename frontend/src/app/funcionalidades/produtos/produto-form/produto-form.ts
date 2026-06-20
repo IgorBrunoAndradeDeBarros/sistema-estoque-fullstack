@@ -2,8 +2,9 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProdutoDTO, Unidade } from '../../models/estoque.models';
-import { ProdutoService } from '../../services/produto';
+import { ProdutoService } from '../services/produto';
+import { Unidade } from '../../../enums/enums';
+import { ProdutoDTO } from '../store/Produto.dto';
 
 @Component({
   selector: 'app-produto-form',

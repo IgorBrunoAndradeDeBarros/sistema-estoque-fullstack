@@ -1,7 +1,8 @@
-import { AlertaDTO, TipoAlerta } from '../../models/estoque.models';
 import { Component, OnInit } from '@angular/core';
 import { AlertaService } from '../../services/alerta';
 import { CommonModule } from '@angular/common';
+import { AlertaDTO } from '../../enums/estoque.models';
+import { TipoAlerta } from '../../enums/enums';
 
 type Filtro = 'todos' | 'nao-lidos' | 'lidos';
 

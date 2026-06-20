@@ -2,8 +2,8 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FornecedorDTO } from '../../models/estoque.models';
-import { FornecedorService } from '../../services/fornecedor';
+import { FornecedorService } from '../services/fornecedor';
+import { FornecedorDTO } from '../store/Fornecedor.dto';
 
 @Component({
   selector: 'app-fornecedor-form',

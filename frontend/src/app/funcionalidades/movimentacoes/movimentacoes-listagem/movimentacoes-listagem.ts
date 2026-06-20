@@ -1,15 +1,15 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { MovimentacaoService } from '../../services/movimentacao';
-import { MovimentacaoDTO } from '../../models/estoque.models';
+import { MovimentacaoService } from '../services/movimentacao';
+import { MovimentacaoDTO } from '../store/Movimentacao.dto';
 
 @Component({
   selector: 'app-movimentacoes',
   standalone: true,
   imports: [CommonModule, RouterLink],
-  templateUrl: './movimentacoes.html',
-  styleUrls: ['./movimentacoes.scss'],
+  templateUrl: './movimentacoes-listagem.html',
+  styleUrls: ['./movimentacoes-listagem.scss'],
 })
 export class MovimentacoesComponent implements OnInit {
   private readonly movimentacaoService = inject(MovimentacaoService);

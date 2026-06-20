@@ -1,12 +1,12 @@
 import { Routes } from '@angular/router';
-import { ProdutosComponent } from './pages/produtos/produtos';
-import { ProdutoFormComponent } from './pages/produto-form/produto-form';
-import { FornecedoresComponent } from './pages/fornecedores/fornecedores';
-import { FornecedorFormComponent } from './pages/fornecedor-form/fornecedor-form';
-import { MovimentacoesComponent } from './pages/movimentacoes/movimentacoes';
-import { MovimentacaoFormComponent } from './pages/movimentacao-form/movimentacao-form';
+import { ProdutosComponent } from './funcionalidades/produtos/produtos-listagem/produtos-listagem';
+import { ProdutoFormComponent } from './funcionalidades/produtos/produto-form/produto-form';
+import { FornecedorFormComponent } from './funcionalidades/fornecedores/fornecedor-form/fornecedor-form';
+import { MovimentacoesComponent } from './funcionalidades/movimentacoes/movimentacoes-listagem/movimentacoes-listagem';
+import { MovimentacaoFormComponent } from './funcionalidades/movimentacoes/movimentacao-form/movimentacao-form';
 import { AlertasComponent } from './pages/alertas/alertas';
 import { HomeComponent } from './pages/home/components/home-component';
+import { FornecedoresComponent } from './funcionalidades/fornecedores/fornecedores-listagem/fornecedores-listagem';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },

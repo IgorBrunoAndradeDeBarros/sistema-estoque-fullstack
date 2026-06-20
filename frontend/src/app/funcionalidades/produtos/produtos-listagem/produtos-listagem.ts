@@ -2,15 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ProdutoDTO } from '../../models/estoque.models';
-import { ProdutoService } from '../../services/produto';
+import { ProdutoService } from '../services/produto';
+import { ProdutoDTO } from '../store/Produto.dto';
 
 @Component({
   selector: 'app-produtos',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './produtos.html',
-  styleUrls: ['./produtos.scss'],
+  templateUrl: './produtos-listagem.html',
+  styleUrls: ['./produtos-listagem.scss'],
 })
 export class ProdutosComponent implements OnInit {
   produtos: ProdutoDTO[] = [];

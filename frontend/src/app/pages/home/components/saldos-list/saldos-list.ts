@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SaldoDTO } from '../../../../models/estoque.models';
+import { SaldoDTO } from '../../../../enums/estoque.models';
 import { SaldoService } from '../../../../services/saldo';
 
 

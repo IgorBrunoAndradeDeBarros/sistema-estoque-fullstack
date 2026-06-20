@@ -2,15 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { FornecedorDTO } from '../../models/estoque.models';
-import { FornecedorService } from '../../services/fornecedor';
+import { FornecedorService } from '../services/fornecedor';
+import { FornecedorDTO } from '../store/Fornecedor.dto';
 
 @Component({
   selector: 'app-fornecedores',
   standalone: true,
   imports: [CommonModule, FormsModule, RouterLink],
-  templateUrl: './fornecedores.html',
-  styleUrls: ['./fornecedores.scss'],
+  templateUrl: './fornecedores-listagem.html',
+  styleUrls: ['./fornecedores-listagem.scss'],
 })
 export class FornecedoresComponent implements OnInit {
   fornecedores: FornecedorDTO[] = [];
