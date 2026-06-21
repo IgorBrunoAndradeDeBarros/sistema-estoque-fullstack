@@ -1,0 +1,83 @@
+<section class="produtos-page">
+  <header class="page-header">
+    <div>
+      <h1>Produtos</h1>
+      <p class="subtitle">Catálogo de produtos cadastrados no estoque</p>
+    </div>
+    <button class="btn btn-primary" type="button" (click)="novo()">+ Novo produto</button>
+  </header>
+
+  <div class="filtros card">
+    <input
+      type="text"
+      placeholder="Buscar por nome..."
+      [(ngModel)]="filtroNome"
+      (keyup.enter)="buscar()"
+    />
+    <input
+      type="text"
+      placeholder="Categoria..."
+      [(ngModel)]="filtroCategoria"
+      (keyup.enter)="buscar()"
+    />
+    <select [(ngModel)]="filtroAtivo" (change)="buscar()">
+      <option value="ativos">Ativos</option>
+      <option value="inativos">Inativos</option>
+      <option value="todos">Todos</option>
+    </select>
+    <button class="btn btn-primary" type="button" (click)="buscar()">Buscar</button>
+    <button class="btn btn-ghost" type="button" (click)="limparFiltros()">Limpar</button>
+  </div>
+
+  <div class="card tabela-card">
+    <div class="estado" *ngIf="carregando()">Carregando produtos...</div>
+    <div class="estado erro" *ngIf="erro() && !carregando()">{{ erro() }}</div>
+    <div class="estado vazio" *ngIf="!carregando() && !erro() && produtos().length === 0">
+      Nenhum produto encontrado.
+    </div>
+
+    <table *ngIf="!carregando() && produtos().length > 0">
+      <thead>
+      <tr>
+        <th>Código</th>
+        <th>Nome</th>
+        <th>Categoria</th>
+        <th>Unidade</th>
+        <th>Preço custo</th>
+        <th>Estoque mín.</th>
+        <th>Status</th>
+        <th class="col-acoes">Ações</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let p of produtos()">
+        <td class="codigo">{{ p.codigo }}</td>
+        <td class="nome">
+          <a class="link-nome" (click)="detalhar(p)">{{ p.nome }}</a>
+        </td>
+        <td>{{ p.categoria || '-' }}</td>
+        <td>{{ p.unidade || '-' }}</td>
+        <td>{{ (p.precoCusto || 0) | currency: 'BRL' }}</td>
+        <td>{{ p.estoqueMin ?? '-' }}</td>
+        <td>
+            <span class="status" [class.inativo]="!p.ativo">
+              {{ p.ativo ? 'Ativo' : 'Inativo' }}
+            </span>
+        </td>
+        <td class="col-acoes">
+          <button class="btn-icon" type="button" title="Editar" (click)="editar(p)">✏️</button>
+          <button
+            class="btn-icon"
+            type="button"
+            title="Desativar"
+            *ngIf="p.ativo"
+            (click)="desativar(p)"
+          >
+            🚫
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

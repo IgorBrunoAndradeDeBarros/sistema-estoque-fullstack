@@ -1,0 +1,95 @@
+<section class="movimentacao-form-page">
+  <header class="page-header">
+    <h1>Registrar movimentação</h1>
+    <p class="subtitle">Registre entrada, saída ou ajuste de estoque</p>
+  </header>
+
+  <div class="card">
+    <form class="form-grid" [formGroup]="form" (ngSubmit)="salvar()">
+      <div class="campo campo-full">
+        <label>Tipo de movimentação</label>
+        <div class="tipo-selector">
+          <button
+            type="button"
+            class="tipo-btn"
+            *ngFor="let t of tipos"
+            [class.active]="campo.tipo.value === t.valor"
+            (click)="form.patchValue({ tipo: t.valor })"
+          >
+            {{ t.label }}
+          </button>
+        </div>
+      </div>
+
+      <div class="campo">
+        <label for="produtoId">ID do produto</label>
+        <input
+          id="produtoId"
+          type="number"
+          min="1"
+          formControlName="produtoId"
+          placeholder="Ex: 1"
+        />
+        <span class="erro-campo" *ngIf="campo.produtoId.touched && campo.produtoId.invalid">
+          Informe o produto.
+        </span>
+      </div>
+
+      <div class="campo">
+        <label for="quantidade">Quantidade</label>
+        <input
+          id="quantidade"
+          type="number"
+          min="1"
+          formControlName="quantidade"
+        />
+        <span class="erro-campo" *ngIf="campo.quantidade.touched && campo.quantidade.invalid">
+          Informe uma quantidade válida.
+        </span>
+      </div>
+
+      <div class="campo" *ngIf="exigeCusto">
+        <label for="custoUnit">Custo unitário</label>
+        <input
+          id="custoUnit"
+          type="number"
+          step="0.01"
+          min="0"
+          formControlName="custoUnit"
+        />
+        <span class="erro-campo" *ngIf="campo.custoUnit.touched && campo.custoUnit.invalid">
+          Informe o custo unitário da entrada.
+        </span>
+      </div>
+
+      <div class="campo">
+        <label for="docRef">Documento de referência</label>
+        <input
+          id="docRef"
+          type="text"
+          formControlName="docRef"
+          placeholder="Ex: NF-00123"
+        />
+      </div>
+
+      <div class="campo campo-full">
+        <label for="motivo">Motivo</label>
+        <textarea
+          id="motivo"
+          formControlName="motivo"
+          rows="3"
+          placeholder="Descreva o motivo da movimentação"
+        ></textarea>
+      </div>
+
+      <p class="erro-geral" *ngIf="erro">{{ erro }}</p>
+
+      <div class="acoes campo-full">
+        <button type="button" class="btn btn-ghost" (click)="cancelar()">Cancelar</button>
+        <button type="submit" class="btn btn-primary" [disabled]="salvando">
+          {{ salvando ? 'Salvando...' : 'Registrar movimentação' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</section>

@@ -1,0 +1,34 @@
+<div class="widget alertas-widget">
+  <div class="widget-header">
+    <h3>Alertas recentes</h3>
+    <a routerLink="/alertas" class="ver-todos">Ver todos</a>
+  </div>
+
+  <div class="widget-body">
+    <div class="estado" *ngIf="carregando()">Carregando alertas...</div>
+    <div class="estado erro" *ngIf="erro() && !carregando()">{{ erro() }}</div>
+    <div class="estado vazio" *ngIf="!carregando() && !erro() && alertas().length === 0">
+      Nenhum alerta pendente. Tudo certo por aqui!
+    </div>
+
+    <ul class="lista-alertas" *ngIf="!carregando() && alertas().length > 0">
+      <li *ngFor="let alerta of alertas()" class="item">
+        <span class="indicador" [class.zerado]="alerta.tipo === 'ESTOQUE_ZERADO'"></span>
+
+        <div class="conteudo">
+          <span class="produto">{{ alerta.nomeProduto }}</span>
+          <p class="mensagem">{{ alerta.mensagem }}</p>
+        </div>
+
+        <button
+          type="button"
+          class="btn-link"
+          title="Marcar como lido"
+          (click)="marcarComoLido(alerta)"
+        >
+          ✓
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>

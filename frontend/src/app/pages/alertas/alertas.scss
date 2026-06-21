@@ -1,0 +1,179 @@
+.alertas-page {
+  padding: 2rem;
+  max-width: 960px;
+  margin: 0 auto;
+
+  .page-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin: 0 0 0.25rem;
+    }
+
+    .subtitle {
+      color: #64748b;
+      font-size: 0.9rem;
+      margin: 0;
+    }
+  }
+
+  .filtros {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+
+    .chip {
+      border: 1px solid #e2e8f0;
+      background: white;
+      color: #64748b;
+      padding: 0.4rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.15s ease;
+
+      &:hover { border-color: #38bdf8; color: #1e293b; }
+
+      &.active {
+        background-color: #1e293b;
+        border-color: #1e293b;
+        color: white;
+        font-weight: 600;
+      }
+    }
+  }
+
+  .card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+  }
+
+  .estado {
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    color: #64748b;
+    font-size: 0.9rem;
+
+    &.erro { color: #ef4444; }
+  }
+
+  .lista-alertas {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    .item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem;
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid #f1f5f9;
+      transition: background-color 0.15s ease;
+
+      &:last-child { border-bottom: none; }
+
+      &.nao-lido { background-color: #f0f9ff; }
+
+      &:hover { background-color: #f8fafc; }
+
+      .indicador {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin-top: 0.4rem;
+        flex-shrink: 0;
+        background-color: #f59e0b;
+
+        &.zerado { background-color: #ef4444; }
+      }
+
+      .conteudo {
+        flex: 1;
+        min-width: 0;
+
+        .linha-topo {
+          display: flex;
+          align-items: center;
+          gap: 0.6rem;
+          margin-bottom: 0.3rem;
+          flex-wrap: wrap;
+        }
+
+        .tipo-badge {
+          font-size: 0.7rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.03em;
+          color: #b45309;
+          background-color: #fef3c7;
+          padding: 0.2rem 0.5rem;
+          border-radius: 6px;
+
+          &.zerado {
+            color: #b91c1c;
+            background-color: #fee2e2;
+          }
+        }
+
+        .produto {
+          font-weight: 600;
+          color: #1e293b;
+          font-size: 0.95rem;
+        }
+
+        .mensagem {
+          margin: 0 0 0.3rem;
+          color: #475569;
+          font-size: 0.88rem;
+        }
+
+        .data {
+          font-size: 0.78rem;
+          color: #94a3b8;
+        }
+      }
+
+      .btn-link {
+        background: none;
+        border: none;
+        color: #38bdf8;
+        font-size: 0.82rem;
+        font-weight: 600;
+        cursor: pointer;
+        white-space: nowrap;
+        padding: 0.3rem 0;
+
+        &:hover { color: #0ea5e9; text-decoration: underline; }
+      }
+    }
+  }
+}
+
+.btn {
+  border: none;
+  border-radius: 8px;
+  padding: 0.55rem 1.1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  &:disabled { opacity: 0.5; cursor: not-allowed; }
+}
+
+.btn-ghost {
+  background: white;
+  border: 1px solid #e2e8f0;
+  color: #1e293b;
+
+  &:hover:not(:disabled) { border-color: #38bdf8; color: #0ea5e9; }
+}
