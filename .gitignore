@@ -1,4 +1,4 @@
-#Maven
+# Maven
 backend/target/
 pom.xml.tag
 pom.xml.releaseBackup
@@ -14,6 +14,16 @@ bin/
 
 # IntelliJ
 backend/.idea
+.idea/
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/usage.statistics.xml
+.idea/shelf/
+.idea/httpRequests/
+.idea/dataSources/
+.idea/dataSources.local.xml
+.idea/sonarlint/
+.idea/dictionaries/
 *.ipr
 *.iml
 *.iws
@@ -25,8 +35,28 @@ nb-configuration.xml
 .vscode
 .factorypath
 
+# Node / Angular (frontend)
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+frontend/coverage/
+frontend/.env
+frontend/.env.*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Ferramentas de IA
+.ai/mcp/mcp.json
+
 # OSX
 .DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
 
 # Vim
 *.swp
@@ -41,5 +71,11 @@ nb-configuration.xml
 
 # Plugin directory
 /.quarkus/cli/plugins/
+
 # TLS Certificates
 .certs/
+
+# Diversos
+*.bak
+*.tmp
+*.log
