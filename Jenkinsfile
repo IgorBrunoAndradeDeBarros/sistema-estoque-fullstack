@@ -1,11 +1,24 @@
 pipeline {
-    agent any
+    agent none
+
+    options {
+        timestamps()
+        disableConcurrentBuilds()
+        buildDiscarder(logRotator(numToKeepStr: '20'))
+    }
+
+    environment {
+        DOCKER_BUILDKIT       = '1'
+        COMPOSE_DOCKER_CLI_BUILD = '1'
+    }
 
     stages {
 
         stage('Checkout') {
+            agent any
             steps {
                 checkout scm
+                stash name: 'source', includes: '**', useDefaultExcludes: true
             }
         }
 
@@ -17,10 +30,11 @@ pipeline {
                 }
             }
             steps {
+                unstash 'source'
                 dir('backend') {
-                    sh 'chmod +x ./mvnw'
-                    sh './mvnw clean package -DskipTests'
+                    sh 'mvn -B clean package -DskipTests'
                 }
+                stash name: 'backend-artifact', includes: 'backend/target/quarkus-app/**,backend/target/*.jar', allowEmpty: true
             }
         }
 
@@ -32,9 +46,14 @@ pipeline {
                 }
             }
             steps {
+                unstash 'source'
                 dir('backend') {
-                    sh 'chmod +x ./mvnw'
-                    sh './mvnw test'
+                    sh 'mvn -B test'
+                }
+            }
+            post {
+                always {
+                    junit testResults: 'backend/target/surefire-reports/*.xml', allowEmptyResults: true
                 }
             }
         }
@@ -44,21 +63,32 @@ pipeline {
                 docker { image 'node:20-alpine' }
             }
             steps {
+                unstash 'source'
                 dir('frontend') {
                     sh 'npm ci'
                     sh 'npm run build -- --configuration production'
                 }
+                stash name: 'frontend-artifact', includes: 'frontend/dist/**'
             }
         }
 
         stage('Build das Imagens Docker') {
+            agent any
             steps {
+                unstash 'source'
+                unstash 'backend-artifact'
+                unstash 'frontend-artifact'
                 sh 'docker compose build'
             }
         }
     }
 
     post {
+        always {
+            node('') {
+                cleanWs()
+            }
+        }
         success {
             echo 'Pipeline executada com sucesso!'
         }
