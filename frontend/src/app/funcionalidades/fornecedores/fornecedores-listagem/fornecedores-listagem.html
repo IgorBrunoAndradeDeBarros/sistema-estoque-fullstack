@@ -1,0 +1,72 @@
+<section class="fornecedores-page">
+  <header class="page-header">
+    <div>
+      <h1>Fornecedores</h1>
+      <p class="subtitle">Gerencie os fornecedores cadastrados</p>
+    </div>
+    <button class="btn btn-primary" type="button" (click)="novo()">+ Novo fornecedor</button>
+  </header>
+
+  <div class="filtros card">
+    <input
+      type="text"
+      placeholder="Buscar por razão social..."
+      [(ngModel)]="filtroNome"
+      (keyup.enter)="buscar()"
+    />
+    <input
+      type="text"
+      placeholder="Buscar por CNPJ..."
+      [(ngModel)]="filtroCnpj"
+      (keyup.enter)="buscar()"
+    />
+    <button class="btn btn-primary" type="button" (click)="buscar()">Buscar</button>
+    <button class="btn btn-ghost" type="button" (click)="limparFiltros()">Limpar</button>
+  </div>
+
+  <div class="card tabela-card">
+    <div class="estado" *ngIf="carregando()">Carregando fornecedores...</div>
+    <div class="estado erro" *ngIf="erro() && !carregando()">{{ erro() }}</div>
+    <div class="estado vazio" *ngIf="!carregando() && !erro() && fornecedores().length === 0">
+      Nenhum fornecedor encontrado.
+    </div>
+
+    <table *ngIf="!carregando() && fornecedores().length > 0">
+      <thead>
+      <tr>
+        <th>Razão social</th>
+        <th>CNPJ</th>
+        <th>E-mail</th>
+        <th>Telefone</th>
+        <th>Status</th>
+        <th class="col-acoes">Ações</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let f of fornecedores()">
+        <td class="nome">{{ f.razaoSocial }}</td>
+        <td>{{ f.cnpj }}</td>
+        <td>{{ f.email }}</td>
+        <td>{{ f.telefone }}</td>
+        <td>
+            <span class="status" [class.inativo]="!f.ativo">
+              {{ f.ativo ? 'Ativo' : 'Inativo' }}
+            </span>
+        </td>
+        <td class="col-acoes">
+          <button class="btn-icon" type="button" title="Editar" (click)="editar(f)">✏️</button>
+          <button
+            class="btn-icon"
+            type="button"
+            title="Desativar"
+            *ngIf="f.ativo"
+            (click)="desativar(f)"
+          >
+            🚫
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

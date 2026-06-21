@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   postgres:
     image: postgres:17
@@ -20,7 +18,7 @@ services:
 
   estoque-api:
     build:
-      context: .
+      context: ./backend
       dockerfile: src/main/docker/Dockerfile.jvm
     container_name: estoque-api
     ports:
@@ -32,6 +30,16 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+
+  estoque-front:
+    build:
+      context: ./frontend
+      dockerfile: docker/Dockerfile
+    container_name: estoque-front
+    ports:
+      - "4200:80"
+    depends_on:
+      - estoque-api
 
 volumes:
   estoque-postgres-data:

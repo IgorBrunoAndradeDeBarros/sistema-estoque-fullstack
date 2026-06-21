@@ -1,0 +1,48 @@
+<section class="movimentacoes-page">
+  <header class="page-header">
+    <div>
+      <h1>Movimentações</h1>
+      <p class="subtitle">Histórico de entradas, saídas e ajustes de estoque</p>
+    </div>
+    <button class="btn btn-primary" type="button" routerLink="/movimentacoes/registrar">
+      + Registrar movimentação
+    </button>
+  </header>
+
+  <div class="card tabela-card">
+    <div class="estado" *ngIf="carregando()">Carregando movimentações...</div>
+    <div class="estado erro" *ngIf="erro() && !carregando()">{{ erro() }}</div>
+    <div class="estado vazio" *ngIf="!carregando() && !erro() && movimentacoes().length === 0">
+      Nenhuma movimentação registrada.
+    </div>
+
+    <table *ngIf="!carregando() && movimentacoes().length > 0">
+      <thead>
+      <tr>
+        <th>Data</th>
+        <th>Tipo</th>
+        <th>Produto</th>
+        <th>Quantidade</th>
+        <th>Custo unit.</th>
+        <th>Documento</th>
+        <th>Motivo</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let m of movimentacoes()">
+        <td>{{ m.dataHora | date: 'dd/MM/yyyy HH:mm' }}</td>
+        <td>
+            <span class="tipo-badge" [class]="m.tipo.toLowerCase()">
+              {{ m.tipo }}
+            </span>
+        </td>
+        <td>{{ m.produtoId }}</td>
+        <td>{{ m.quantidade }}</td>
+        <td>{{ m.custoUnit | currency: 'BRL' }}</td>
+        <td>{{ m.docRef || '—' }}</td>
+        <td>{{ m.motivo || '—' }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

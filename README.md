@@ -1,79 +1,94 @@
-# estoque-api
+# estoque
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+Sistema de gerenciamento de estoque, composto por:
 
-If you want to learn more about Quarkus, please visit its website: <https://quarkus.io/>.
+- **backend** (`estoque-api`): API REST desenvolvida em [Quarkus](https://quarkus.io/) (Java)
+- **frontend** (`estoque-front`): aplicação web desenvolvida em [Angular](https://angular.dev/)
+- **postgres**: banco de dados PostgreSQL 17
 
-## Running the application in dev mode
+Todo o ambiente é orquestrado via Docker Compose, facilitando a execução sem precisar instalar Java, Node ou Postgres localmente.
 
-You can run your application in dev mode that enables live coding using:
+## Pré-requisitos
 
-```shell script
-./mvnw quarkus:dev
-```
+- [Docker](https://docs.docker.com/get-docker/)
+- [Docker Compose](https://docs.docker.com/compose/) (já incluso no Docker Desktop)
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at <http://localhost:8080/q/dev/>.
+## Como rodar
 
-## Packaging and running the application
-
-The application can be packaged using:
-
-```shell script
-./mvnw package
-```
-
-It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
-
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
-
-If you want to build an _über-jar_, execute the following command:
+Na raiz do projeto, execute:
 
 ```shell script
-./mvnw package -Dquarkus.package.jar.type=uber-jar
+docker-compose up --build
 ```
 
-The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
+Esse comando irá:
 
-## Creating a native executable
+1. Baixar a imagem do PostgreSQL e criar o banco `estoque_db`
+2. Buildar a imagem da API (`backend/src/main/docker/Dockerfile.jvm`) e subir o container `estoque-api`
+3. Buildar a imagem do frontend (`frontend/docker/Dockerfile`) e subir o container `estoque-front`
+4. Conectar tudo na mesma rede, aguardando o banco estar saudável (`healthcheck`) antes de iniciar a API
 
-You can create a native executable using:
+## Serviços e portas
+
+| Serviço         | Container         | Porta externa | Porta interna |
+|-----------------|-------------------|----------------|----------------|
+| PostgreSQL      | estoque-postgres  | 5433           | 5432           |
+| API (Quarkus)   | estoque-api       | 8080           | 8080           |
+| Frontend (Angular) | estoque-front  | 4200           | 80             |
+
+## Acessando a aplicação
+
+- **Frontend:** [http://localhost:4200](http://localhost:4200)
+- **API:** [http://localhost:8080](http://localhost:8080)
+- **Swagger UI (API):** [http://localhost:8080/q/swagger-ui](http://localhost:8080/q/swagger-ui)
+
+## Variáveis de ambiente da API
+
+Configuradas diretamente no `docker-compose.yml`:
+
+```yaml
+QUARKUS_DATASOURCE_JDBC_URL: jdbc:postgresql://postgres:5432/estoque_db
+QUARKUS_DATASOURCE_USERNAME: postgres
+QUARKUS_DATASOURCE_PASSWORD: admin123
+```
+
+## Persistência de dados
+
+Os dados do PostgreSQL são persistidos no volume `estoque-postgres-data`, então eles não são perdidos ao reiniciar os containers.
+
+## Parando os containers
 
 ```shell script
-./mvnw package -Dnative
+docker-compose down
 ```
 
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using:
+Para parar e remover também os volumes (apaga os dados do banco):
 
 ```shell script
-./mvnw package -Dnative -Dquarkus.native.container-build=true
+docker-compose down -v
 ```
 
-You can then execute your native executable with: `./target/estoque-api-1.0.0-SNAPSHOT-runner`
+## Rodando em background (modo detached)
 
-If you want to learn more about building native executables, please consult <https://quarkus.io/guides/maven-tooling>.
+```shell script
+docker-compose up --build -d
+```
 
-## Related Guides
+Para ver os logs depois:
 
-- SmallRye OpenAPI ([guide](https://quarkus.io/guides/openapi-swaggerui)): Generate OpenAPI schemas and serve Swagger UI for REST API documentation
-- REST Jackson ([guide](https://quarkus.io/guides/rest#json-serialisation)): Jackson serialization support for Quarkus REST. This extension is not compatible with the quarkus-resteasy extension, or any of the extensions that depend on it
-- Hibernate ORM with Panache ([guide](https://quarkus.io/guides/hibernate-orm-panache)): Simplified JPA/Hibernate data access layer with active record and repository patterns
-- JDBC Driver - PostgreSQL ([guide](https://quarkus.io/guides/datasource)): Connect to the PostgreSQL database via JDBC
+```shell script
+docker-compose logs -f
+```
 
-## Provided Code
+## Estrutura do repositório
 
-### Hibernate ORM
-
-Create your first JPA entity
-
-[Related guide section...](https://quarkus.io/guides/hibernate-orm)
-
-
-[Related Hibernate with Panache section...](https://quarkus.io/guides/hibernate-orm-panache)
-
-
-### REST
-
-Easily start your REST Web Services
-
-[Related guide section...](https://quarkus.io/guides/getting-started-reactive#reactive-jax-rs-resources)
+```
+estoque/
+├── backend/              # API Quarkus (estoque-api)
+│   └── src/main/docker/
+│       └── Dockerfile.jvm
+├── frontend/              # Aplicação Angular (estoque-front)
+│   └── docker/
+│       └── Dockerfile
+└── docker-compose.yml
+```

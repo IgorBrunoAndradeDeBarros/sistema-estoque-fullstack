@@ -1,0 +1,551 @@
+{
+  "info": {
+    "name": "Estoque API",
+    "description": "Collection da API de controle de estoque (Produtos, Fornecedores, Movimentações, Saldos, Alertas)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_postman_id": "e3f2b1a0-1234-4abc-9def-0a1b2c3d4e5f"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8080", "type": "string" },
+    { "key": "fornecedorId", "value": "", "type": "string" },
+    { "key": "produtoId", "value": "", "type": "string" },
+    { "key": "produtoId2", "value": "", "type": "string" },
+    { "key": "movimentacaoId", "value": "", "type": "string" },
+    { "key": "alertaId", "value": "", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "Fornecedores",
+      "item": [
+        {
+          "name": "Cadastrar Fornecedor",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 201) {",
+                  "    const json = pm.response.json();",
+                  "    pm.collectionVariables.set('fornecedorId', json.id);",
+                  "}",
+                  "pm.test('Status 201', () => pm.response.to.have.status(201));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"razaoSocial\": \"Distribuidora Alfa Ltda\",\n  \"cnpj\": \"12345678000190\",\n  \"email\": \"contato@alfa.com.br\",\n  \"telefone\": \"11999990000\",\n  \"ativo\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/fornecedores",
+              "host": ["{{baseUrl}}"],
+              "path": ["fornecedores"]
+            }
+          }
+        },
+        {
+          "name": "Listar Fornecedores",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/fornecedores?nome=&cnpj=",
+              "host": ["{{baseUrl}}"],
+              "path": ["fornecedores"],
+              "query": [
+                { "key": "nome", "value": "", "disabled": true },
+                { "key": "cnpj", "value": "", "disabled": true }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Buscar Fornecedor por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/fornecedores/{{fornecedorId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["fornecedores", "{{fornecedorId}}"]
+            }
+          }
+        },
+        {
+          "name": "Atualizar Fornecedor",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"razaoSocial\": \"Distribuidora Alfa Ltda - ME\",\n  \"cnpj\": \"12345678000190\",\n  \"email\": \"financeiro@alfa.com.br\",\n  \"telefone\": \"11999991111\",\n  \"ativo\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/fornecedores/{{fornecedorId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["fornecedores", "{{fornecedorId}}"]
+            }
+          }
+        },
+        {
+          "name": "Desativar Fornecedor",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/fornecedores/{{fornecedorId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["fornecedores", "{{fornecedorId}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Produtos",
+      "item": [
+        {
+          "name": "Cadastrar Produto",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 201) {",
+                  "    const json = pm.response.json();",
+                  "    pm.collectionVariables.set('produtoId', json.id);",
+                  "}",
+                  "pm.test('Status 201', () => pm.response.to.have.status(201));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"codigo\": \"PRD-001\",\n  \"nome\": \"Parafuso Sextavado 1/4\",\n  \"descricao\": \"Parafuso sextavado em aço inox 1/4 x 1\",\n  \"categoria\": \"Fixadores\",\n  \"unidade\": \"UN\",\n  \"precoCusto\": 0.35,\n  \"estoqueMin\": 100,\n  \"fornecedorId\": {{fornecedorId}},\n  \"ativo\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/produtos",
+              "host": ["{{baseUrl}}"],
+              "path": ["produtos"]
+            }
+          }
+        },
+        {
+          "name": "Cadastrar Produto 2",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 201) {",
+                  "    const json = pm.response.json();",
+                  "    pm.collectionVariables.set('produtoId2', json.id);",
+                  "}",
+                  "pm.test('Status 201', () => pm.response.to.have.status(201));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"codigo\": \"PRD-002\",\n  \"nome\": \"Cabo Flexível 2.5mm\",\n  \"descricao\": \"Cabo flexível 2.5mm 750V\",\n  \"categoria\": \"Elétrica\",\n  \"unidade\": \"M\",\n  \"precoCusto\": 2.10,\n  \"estoqueMin\": 50,\n  \"fornecedorId\": {{fornecedorId}},\n  \"ativo\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/produtos",
+              "host": ["{{baseUrl}}"],
+              "path": ["produtos"]
+            }
+          }
+        },
+        {
+          "name": "Listar Produtos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/produtos?nome=&ativo=&categoria=",
+              "host": ["{{baseUrl}}"],
+              "path": ["produtos"],
+              "query": [
+                { "key": "nome", "value": "", "disabled": true },
+                { "key": "ativo", "value": "true", "disabled": true },
+                { "key": "categoria", "value": "", "disabled": true }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Buscar Produto por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/produtos/{{produtoId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["produtos", "{{produtoId}}"]
+            }
+          }
+        },
+        {
+          "name": "Listar Produtos Críticos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/produtos/criticos",
+              "host": ["{{baseUrl}}"],
+              "path": ["produtos", "criticos"]
+            }
+          }
+        },
+        {
+          "name": "Atualizar Produto",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"codigo\": \"PRD-001\",\n  \"nome\": \"Parafuso Sextavado 1/4 Inox\",\n  \"descricao\": \"Parafuso sextavado em aço inox 1/4 x 1 - atualizado\",\n  \"categoria\": \"Fixadores\",\n  \"unidade\": \"UN\",\n  \"precoCusto\": 0.40,\n  \"estoqueMin\": 120,\n  \"fornecedorId\": {{fornecedorId}},\n  \"ativo\": true\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/produtos/{{produtoId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["produtos", "{{produtoId}}"]
+            }
+          }
+        },
+        {
+          "name": "Desativar Produto",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/produtos/{{produtoId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["produtos", "{{produtoId}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Movimentações",
+      "item": [
+        {
+          "name": "Registrar Entrada",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 201) {",
+                  "    const json = pm.response.json();",
+                  "    pm.collectionVariables.set('movimentacaoId', json.id);",
+                  "}",
+                  "pm.test('Status 201', () => pm.response.to.have.status(201));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"produtoId\": {{produtoId}},\n  \"quantidade\": 500,\n  \"custoUnit\": 0.35,\n  \"docRef\": \"NF-1001\",\n  \"motivo\": \"Compra inicial\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/movimentacoes/entrada",
+              "host": ["{{baseUrl}}"],
+              "path": ["movimentacoes", "entrada"]
+            }
+          }
+        },
+        {
+          "name": "Registrar Entrada (Produto 2)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"produtoId\": {{produtoId2}},\n  \"quantidade\": 200,\n  \"custoUnit\": 2.10,\n  \"docRef\": \"NF-1002\",\n  \"motivo\": \"Compra inicial\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/movimentacoes/entrada",
+              "host": ["{{baseUrl}}"],
+              "path": ["movimentacoes", "entrada"]
+            }
+          }
+        },
+        {
+          "name": "Registrar Saída",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"produtoId\": {{produtoId}},\n  \"quantidade\": 50,\n  \"docRef\": \"OS-2001\",\n  \"motivo\": \"Consumo em ordem de serviço\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/movimentacoes/saida",
+              "host": ["{{baseUrl}}"],
+              "path": ["movimentacoes", "saida"]
+            }
+          }
+        },
+        {
+          "name": "Registrar Saída (gera alerta - estoque mínimo)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"produtoId\": {{produtoId}},\n  \"quantidade\": 400,\n  \"docRef\": \"OS-2002\",\n  \"motivo\": \"Consumo em massa para teste de alerta de estoque mínimo\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/movimentacoes/saida",
+              "host": ["{{baseUrl}}"],
+              "path": ["movimentacoes", "saida"]
+            }
+          }
+        },
+        {
+          "name": "Registrar Saída (saldo insuficiente - 400 esperado)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"produtoId\": {{produtoId}},\n  \"quantidade\": 99999,\n  \"docRef\": \"OS-2003\",\n  \"motivo\": \"Teste de saldo insuficiente\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/movimentacoes/saida",
+              "host": ["{{baseUrl}}"],
+              "path": ["movimentacoes", "saida"]
+            }
+          }
+        },
+        {
+          "name": "Registrar Ajuste (positivo)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"produtoId\": {{produtoId2}},\n  \"quantidade\": 10,\n  \"motivo\": \"Ajuste de inventário - sobra encontrada\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/movimentacoes/ajuste",
+              "host": ["{{baseUrl}}"],
+              "path": ["movimentacoes", "ajuste"]
+            }
+          }
+        },
+        {
+          "name": "Registrar Ajuste (negativo)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"produtoId\": {{produtoId2}},\n  \"quantidade\": -180,\n  \"motivo\": \"Ajuste de inventário - perda/avaria\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/movimentacoes/ajuste",
+              "host": ["{{baseUrl}}"],
+              "path": ["movimentacoes", "ajuste"]
+            }
+          }
+        },
+        {
+          "name": "Registrar Ajuste (sem motivo - 400 esperado)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"produtoId\": {{produtoId2}},\n  \"quantidade\": 5\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/movimentacoes/ajuste",
+              "host": ["{{baseUrl}}"],
+              "path": ["movimentacoes", "ajuste"]
+            }
+          }
+        },
+        {
+          "name": "Listar Movimentações",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/movimentacoes?tipo=&produtoId=&de=&ate=",
+              "host": ["{{baseUrl}}"],
+              "path": ["movimentacoes"],
+              "query": [
+                { "key": "tipo", "value": "ENTRADA", "disabled": true },
+                { "key": "produtoId", "value": "{{produtoId}}", "disabled": true },
+                { "key": "de", "value": "2026-01-01T00:00:00", "disabled": true },
+                { "key": "ate", "value": "2026-12-31T23:59:59", "disabled": true }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Buscar Movimentação por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/movimentacoes/{{movimentacaoId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["movimentacoes", "{{movimentacaoId}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Saldos",
+      "item": [
+        {
+          "name": "Listar Saldos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/saldos",
+              "host": ["{{baseUrl}}"],
+              "path": ["saldos"]
+            }
+          }
+        },
+        {
+          "name": "Buscar Saldo por Produto",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/saldos/{{produtoId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["saldos", "{{produtoId}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Alertas",
+      "item": [
+        {
+          "name": "Listar Alertas",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "if (pm.response.code === 200) {",
+                  "    const json = pm.response.json();",
+                  "    if (Array.isArray(json) && json.length > 0) {",
+                  "        pm.collectionVariables.set('alertaId', json[0].id);",
+                  "    }",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/alertas?lido=",
+              "host": ["{{baseUrl}}"],
+              "path": ["alertas"],
+              "query": [
+                { "key": "lido", "value": "false", "disabled": true }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Contar Alertas Não Lidos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/alertas/count",
+              "host": ["{{baseUrl}}"],
+              "path": ["alertas", "count"]
+            }
+          }
+        },
+        {
+          "name": "Marcar Alerta como Lido",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/alertas/{{alertaId}}/ler",
+              "host": ["{{baseUrl}}"],
+              "path": ["alertas", "{{alertaId}}", "ler"]
+            }
+          }
+        },
+        {
+          "name": "Marcar Todos os Alertas como Lidos",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/alertas/ler-todos",
+              "host": ["{{baseUrl}}"],
+              "path": ["alertas", "ler-todos"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

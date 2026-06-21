@@ -1,0 +1,62 @@
+<section class="fornecedor-form-page">
+  <header class="page-header">
+    <h1>{{ modoEdicao ? 'Editar fornecedor' : 'Novo fornecedor' }}</h1>
+    <p class="subtitle">
+      {{ modoEdicao ? 'Atualize os dados do fornecedor' : 'Preencha os dados para cadastrar um novo fornecedor' }}
+    </p>
+  </header>
+
+  <div class="card">
+    <div class="estado" *ngIf="carregando()">Carregando dados do fornecedor...</div>
+
+    <form class="form-grid" [formGroup]="form" (ngSubmit)="salvar()" *ngIf="!carregando()">
+      <div class="campo campo-full">
+        <label for="razaoSocial">Razão social</label>
+        <input id="razaoSocial" type="text" formControlName="razaoSocial" placeholder="Ex: Distribuidora ABC Ltda" />
+        <span class="erro-campo" *ngIf="campo.razaoSocial.touched && campo.razaoSocial.invalid">
+          Informe a razão social (mínimo 3 caracteres).
+        </span>
+      </div>
+
+      <div class="campo">
+        <label for="cnpj">CNPJ</label>
+        <input id="cnpj" type="text" formControlName="cnpj" placeholder="Somente números" maxlength="14" />
+        <span class="erro-campo" *ngIf="campo.cnpj.touched && campo.cnpj.invalid">
+          Informe um CNPJ válido com 14 dígitos.
+        </span>
+      </div>
+
+      <div class="campo">
+        <label for="telefone">Telefone</label>
+        <input id="telefone" type="text" formControlName="telefone" placeholder="(00) 00000-0000" />
+        <span class="erro-campo" *ngIf="campo.telefone.touched && campo.telefone.invalid">
+          Informe um telefone de contato.
+        </span>
+      </div>
+
+      <div class="campo campo-full">
+        <label for="email">E-mail</label>
+        <input id="email" type="email" formControlName="email" placeholder="contato@fornecedor.com" />
+        <span class="erro-campo" *ngIf="campo.email.touched && campo.email.invalid">
+          Informe um e-mail válido.
+        </span>
+      </div>
+
+      <div class="campo campo-checkbox" *ngIf="modoEdicao">
+        <label class="checkbox-label">
+          <input type="checkbox" formControlName="ativo" />
+          Fornecedor ativo
+        </label>
+      </div>
+
+      <p class="erro-geral" *ngIf="erro()">{{ erro() }}</p>
+
+      <div class="acoes campo-full">
+        <button type="button" class="btn btn-ghost" (click)="cancelar()">Cancelar</button>
+        <button type="submit" class="btn btn-primary" [disabled]="salvando()">
+          {{ salvando() ? 'Salvando...' : 'Salvar fornecedor' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</section>

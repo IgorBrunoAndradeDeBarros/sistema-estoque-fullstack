@@ -1,0 +1,122 @@
+.movimentacoes-page {
+  padding: 2rem;
+
+  .page-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin: 0 0 0.25rem;
+    }
+
+    .subtitle {
+      color: #64748b;
+      font-size: 0.9rem;
+      margin: 0;
+    }
+  }
+
+  .card {
+    background: white;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  }
+
+  .tabela-card {
+    overflow-x: auto;
+  }
+
+  .estado {
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    color: #64748b;
+    font-size: 0.9rem;
+
+    &.erro { color: #ef4444; }
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+    min-width: 760px;
+
+    thead {
+      background-color: #f8fafc;
+
+      th {
+        text-align: left;
+        padding: 0.8rem 1.1rem;
+        color: #64748b;
+        font-weight: 600;
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        border-bottom: 1px solid #e2e8f0;
+        white-space: nowrap;
+      }
+    }
+
+    tbody {
+      tr {
+        border-bottom: 1px solid #f1f5f9;
+
+        &:last-child { border-bottom: none; }
+        &:hover { background-color: #f8fafc; }
+      }
+
+      td {
+        padding: 0.85rem 1.1rem;
+        color: #334155;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  .tipo-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    text-transform: uppercase;
+
+    &.entrada {
+      color: #15803d;
+      background-color: #dcfce7;
+    }
+
+    &.saida {
+      color: #b91c1c;
+      background-color: #fee2e2;
+    }
+
+    &.ajuste {
+      color: #b45309;
+      background-color: #fef3c7;
+    }
+  }
+}
+
+.btn {
+  border: none;
+  border-radius: 8px;
+  padding: 0.55rem 1.1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-primary {
+  background-color: #1e293b;
+  color: white;
+
+  &:hover { background-color: #334155; }
+}
