@@ -6,28 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a88d04e0-9984-46bc-8135-43e23a69d2ca" name="Changes" comment="feat: api collection">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/funcionalidades/fornecedores/fornecedor-form/fornecedor-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/funcionalidades/fornecedores/fornecedor-form/fornecedor-form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/funcionalidades/fornecedores/fornecedor-form/fornecedor-form.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/funcionalidades/fornecedores/fornecedor-form/fornecedor-form.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/funcionalidades/fornecedores/fornecedor-form/fornecedor-form.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/funcionalidades/fornecedores/fornecedor-form/fornecedor-form.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/funcionalidades/fornecedores/fornecedores-listagem/fornecedores-listagem.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/funcionalidades/fornecedores/fornecedores-listagem/fornecedores-listagem.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/funcionalidades/fornecedores/fornecedores-listagem/fornecedores-listagem.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/funcionalidades/fornecedores/fornecedores-listagem/fornecedores-listagem.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/funcionalidades/fornecedores/fornecedores-listagem/fornecedores-listagem.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/funcionalidades/fornecedores/fornecedores-listagem/fornecedores-listagem.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/funcionalidades/movimentacoes/movimentacao-form/movimentacao-form.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/funcionalidades/movimentacoes/movimentacao-form/movimentacao-form.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/funcionalidades/movimentacoes/movimentacoes-listagem/movimentacoes-listagem.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/funcionalidades/movimentacoes/movimentacoes-listagem/movimentacoes-listagem.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/funcionalidades/movimentacoes/movimentacoes-listagem/movimentacoes-listagem.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/funcionalidades/movimentacoes/movimentacoes-listagem/movimentacoes-listagem.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/funcionalidades/produtos/produto-form/produto-form.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/funcionalidades/produtos/produto-form/produto-form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/funcionalidades/produtos/produto-form/produto-form.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/funcionalidades/produtos/produto-form/produto-form.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/funcionalidades/produtos/produto-form/produto-form.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/funcionalidades/produtos/produto-form/produto-form.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/funcionalidades/produtos/produtos-listagem/produtos-listagem.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/funcionalidades/produtos/produtos-listagem/produtos-listagem.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/funcionalidades/produtos/produtos-listagem/produtos-listagem.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/funcionalidades/produtos/produtos-listagem/produtos-listagem.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/alertas/alertas.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/alertas/alertas.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/alertas/alertas.scss" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/alertas/alertas.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/alertas/alertas.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/alertas/alertas.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/home/components/alertas-widget/alertas-widget.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/home/components/alertas-widget/alertas-widget.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/home/components/alertas-widget/alertas-widget.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/home/components/alertas-widget/alertas-widget.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/home/components/saldos-list/saldos-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/home/components/saldos-list/saldos-list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/pages/home/components/saldos-list/saldos-list.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pages/home/components/saldos-list/saldos-list.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,7 +180,7 @@
       <workItem from="1781971464748" duration="6355000" />
       <workItem from="1781985466489" duration="615000" />
       <workItem from="1782009963325" duration="1256000" />
-      <workItem from="1782011342368" duration="7446000" />
+      <workItem from="1782011342368" duration="7901000" />
     </task>
     <task id="LOCAL-00001" summary="estrutura inicial do projeto">
       <option name="closed" value="true" />
@@ -308,7 +286,15 @@
       <option name="project" value="LOCAL" />
       <updated>1782017541263</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="feat: frontend: Stock">
+      <option name="closed" value="true" />
+      <created>1782020184595</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1782020184595</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -340,6 +326,9 @@
     <MESSAGE value="feat: CORS BACK E ADD FRONT NO  docker-compose.yml" />
     <MESSAGE value="refactor: melhora o design das páginas e a estruturação do projeto" />
     <MESSAGE value="feat: api collection" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: api collection" />
+    <MESSAGE value="feat: frontend: Stock" />
+    <MESSAGE value="feat: integração do frontend e configuração de CORS&#10;&#10;- Configura políticas de CORS na aplicação backend&#10;- Adiciona o serviço do frontend no arquivo docker-compose.yml&#10;- Inclui arquivo de collection da API para testes" />
+    <MESSAGE value="feat: integração do frontend e configuração de CORS&#10;&#10;- Configura políticas de CORS na aplicação backend&#10;- Adiciona o serviço do frontend no arquivo docker-compose.yml&#10;- Inclui arquivo de collection da API para testes" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: integração do frontend e configuração de CORS&#10;&#10;- Configura políticas de CORS na aplicação backend&#10;- Adiciona o serviço do frontend no arquivo docker-compose.yml&#10;- Inclui arquivo de collection da API para testes" />
   </component>
 </project>
