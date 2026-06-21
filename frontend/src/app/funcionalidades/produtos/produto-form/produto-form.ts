@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -35,9 +35,9 @@ export class ProdutoFormComponent implements OnInit {
 
   modoEdicao = false;
   produtoId: number | null = null;
-  salvando = false;
-  carregando = false;
-  erro = '';
+  salvando = signal(false);
+  carregando = signal(false);
+  erro = signal('');
 
   ngOnInit(): void {
     const param = this.route.snapshot.paramMap.get('id');
@@ -49,7 +49,7 @@ export class ProdutoFormComponent implements OnInit {
   }
 
   carregarProduto(id: number): void {
-    this.carregando = true;
+    this.carregando.set(true);
     this.produtoService.buscarPorId(id).subscribe({
       next: (dto) => {
         this.form.patchValue({
@@ -62,11 +62,11 @@ export class ProdutoFormComponent implements OnInit {
           estoqueMin: dto.estoqueMin,
           ativo: dto.ativo,
         });
-        this.carregando = false;
+        this.carregando.set(false);
       },
       error: () => {
-        this.erro = 'Não foi possível carregar o produto.';
-        this.carregando = false;
+        this.erro.set('Não foi possível carregar o produto.');
+        this.carregando.set(false);
       },
     });
   }
@@ -77,8 +77,8 @@ export class ProdutoFormComponent implements OnInit {
       return;
     }
 
-    this.salvando = true;
-    this.erro = '';
+    this.salvando.set(true);
+    this.erro.set('');
     const dto = this.form.getRawValue() as unknown as ProdutoDTO;
 
     const requisicao =
@@ -89,8 +89,8 @@ export class ProdutoFormComponent implements OnInit {
     requisicao.subscribe({
       next: () => this.router.navigate(['/produtos']),
       error: () => {
-        this.erro = 'Não foi possível salvar o produto. Verifique os dados.';
-        this.salvando = false;
+        this.erro.set('Não foi possível salvar o produto. Verifique os dados.');
+        this.salvando.set(false);
       },
     });
   }

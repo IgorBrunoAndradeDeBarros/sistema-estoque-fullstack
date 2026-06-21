@@ -8,7 +8,7 @@
       class="btn btn-ghost"
       type="button"
       (click)="marcarTodosComoLidos()"
-      [disabled]="totalNaoLidos === 0"
+      [disabled]="totalNaoLidos() === 0"
     >
       Marcar todos como lidos
     </button>
@@ -42,14 +42,14 @@
   </div>
 
   <div class="card">
-    <div class="estado" *ngIf="carregando">Carregando alertas...</div>
-    <div class="estado erro" *ngIf="erro && !carregando">{{ erro }}</div>
-    <div class="estado vazio" *ngIf="!carregando && !erro && alertas.length === 0">
+    <div class="estado" *ngIf="carregando()">Carregando alertas...</div>
+    <div class="estado erro" *ngIf="erro() && !carregando()">{{ erro() }}</div>
+    <div class="estado vazio" *ngIf="!carregando() && !erro() && alertas().length === 0">
       Nenhum alerta encontrado para este filtro.
     </div>
 
-    <ul class="lista-alertas" *ngIf="!carregando && alertas.length > 0">
-      <li *ngFor="let alerta of alertas" class="item" [class.nao-lido]="!alerta.lido">
+    <ul class="lista-alertas" *ngIf="!carregando() && alertas().length > 0">
+      <li *ngFor="let alerta of alertas()" class="item" [class.nao-lido]="!alerta.lido">
         <span class="indicador" [class.zerado]="alerta.tipo === 'ESTOQUE_ZERADO'"></span>
 
         <div class="conteudo">

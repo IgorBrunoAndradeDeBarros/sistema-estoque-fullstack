@@ -1,19 +1,19 @@
 <div class="widget saldos-list">
   <div class="widget-header">
     <h3>Saldos em estoque</h3>
-    <span class="valor-total" *ngIf="!carregando && saldos.length > 0">
-      {{ valorTotalEstoque | currency: 'BRL' }}
+    <span class="valor-total" *ngIf="!carregando() && saldos().length > 0">
+      {{ valorTotalEstoque() | currency: 'BRL' }}
     </span>
   </div>
 
   <div class="widget-body">
-    <div class="estado" *ngIf="carregando">Carregando saldos...</div>
-    <div class="estado erro" *ngIf="erro && !carregando">{{ erro }}</div>
-    <div class="estado vazio" *ngIf="!carregando && !erro && saldos.length === 0">
+    <div class="estado" *ngIf="carregando()">Carregando saldos...</div>
+    <div class="estado erro" *ngIf="erro() && !carregando()">{{ erro() }}</div>
+    <div class="estado vazio" *ngIf="!carregando() && !erro() && saldos().length === 0">
       Nenhum saldo registrado.
     </div>
 
-    <table class="tabela-saldos" *ngIf="!carregando && saldos.length > 0">
+    <table class="tabela-saldos" *ngIf="!carregando() && saldos().length > 0">
       <thead>
       <tr>
         <th>Produto</th>
@@ -23,7 +23,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let s of saldos">
+      <tr *ngFor="let s of saldos()">
         <td class="nome">
           <span class="codigo">{{ s.codigoProduto }}</span>
           {{ s.nomeProduto }}

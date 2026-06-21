@@ -30,13 +30,13 @@
   </div>
 
   <div class="card tabela-card">
-    <div class="estado" *ngIf="carregando">Carregando produtos...</div>
-    <div class="estado erro" *ngIf="erro && !carregando">{{ erro }}</div>
-    <div class="estado vazio" *ngIf="!carregando && !erro && produtos.length === 0">
+    <div class="estado" *ngIf="carregando()">Carregando produtos...</div>
+    <div class="estado erro" *ngIf="erro() && !carregando()">{{ erro() }}</div>
+    <div class="estado vazio" *ngIf="!carregando() && !erro() && produtos().length === 0">
       Nenhum produto encontrado.
     </div>
 
-    <table *ngIf="!carregando && produtos.length > 0">
+    <table *ngIf="!carregando() && produtos().length > 0">
       <thead>
       <tr>
         <th>Código</th>
@@ -50,15 +50,15 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let p of produtos">
+      <tr *ngFor="let p of produtos()">
         <td class="codigo">{{ p.codigo }}</td>
         <td class="nome">
           <a class="link-nome" (click)="detalhar(p)">{{ p.nome }}</a>
         </td>
-        <td>{{ p.categoria }}</td>
-        <td>{{ p.unidade }}</td>
-        <td>{{ p.precoCusto | currency: 'BRL' }}</td>
-        <td>{{ p.estoqueMin }}</td>
+        <td>{{ p.categoria || '-' }}</td>
+        <td>{{ p.unidade || '-' }}</td>
+        <td>{{ (p.precoCusto || 0) | currency: 'BRL' }}</td>
+        <td>{{ p.estoqueMin ?? '-' }}</td>
         <td>
             <span class="status" [class.inativo]="!p.ativo">
               {{ p.ativo ? 'Ativo' : 'Inativo' }}

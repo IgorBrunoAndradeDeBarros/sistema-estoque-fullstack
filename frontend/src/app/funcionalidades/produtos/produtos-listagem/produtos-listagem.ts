@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -13,9 +13,9 @@ import { ProdutoDTO } from '../store/Produto.dto';
   styleUrls: ['./produtos-listagem.scss'],
 })
 export class ProdutosComponent implements OnInit {
-  produtos: ProdutoDTO[] = [];
-  carregando = false;
-  erro = '';
+  produtos = signal<ProdutoDTO[]>([]);
+  carregando = signal(false);
+  erro = signal('');
 
   filtroNome = '';
   filtroCategoria = '';
@@ -31,20 +31,20 @@ export class ProdutosComponent implements OnInit {
   }
 
   carregar(): void {
-    this.carregando = true;
-    this.erro = '';
+    this.carregando.set(true);
+    this.erro.set('');
     const ativo = this.filtroAtivo === 'todos' ? undefined : this.filtroAtivo === 'ativos';
 
     this.produtoService
       .listar(this.filtroNome || undefined, ativo, this.filtroCategoria || undefined)
       .subscribe({
         next: (dados) => {
-          this.produtos = dados;
-          this.carregando = false;
+          this.produtos.set(dados);
+          this.carregando.set(false);
         },
         error: () => {
-          this.erro = 'Não foi possível carregar os produtos.';
-          this.carregando = false;
+          this.erro.set('Não foi possível carregar os produtos.');
+          this.carregando.set(false);
         },
       });
   }

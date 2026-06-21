@@ -7,9 +7,9 @@
   </header>
 
   <div class="card">
-    <div class="estado" *ngIf="carregando">Carregando dados do fornecedor...</div>
+    <div class="estado" *ngIf="carregando()">Carregando dados do fornecedor...</div>
 
-    <form class="form-grid" [formGroup]="form" (ngSubmit)="salvar()" *ngIf="!carregando">
+    <form class="form-grid" [formGroup]="form" (ngSubmit)="salvar()" *ngIf="!carregando()">
       <div class="campo campo-full">
         <label for="razaoSocial">Razão social</label>
         <input id="razaoSocial" type="text" formControlName="razaoSocial" placeholder="Ex: Distribuidora ABC Ltda" />
@@ -49,12 +49,12 @@
         </label>
       </div>
 
-      <p class="erro-geral" *ngIf="erro">{{ erro }}</p>
+      <p class="erro-geral" *ngIf="erro()">{{ erro() }}</p>
 
       <div class="acoes campo-full">
         <button type="button" class="btn btn-ghost" (click)="cancelar()">Cancelar</button>
-        <button type="submit" class="btn btn-primary" [disabled]="salvando">
-          {{ salvando ? 'Salvando...' : 'Salvar fornecedor' }}
+        <button type="submit" class="btn btn-primary" [disabled]="salvando()">
+          {{ salvando() ? 'Salvando...' : 'Salvar fornecedor' }}
         </button>
       </div>
     </form>

@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, computed, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SaldoDTO } from '../../../../enums/estoque.models';
 import { SaldoService } from '../../../../services/saldo';
-
 
 @Component({
   selector: 'app-saldos-list',
@@ -12,9 +11,13 @@ import { SaldoService } from '../../../../services/saldo';
   styleUrls: ['./saldos-list.scss'],
 })
 export class SaldosListComponent implements OnInit {
-  saldos: SaldoDTO[] = [];
-  carregando = false;
-  erro = '';
+  saldos = signal<SaldoDTO[]>([]);
+  carregando = signal(false);
+  erro = signal('');
+
+  valorTotalEstoque = computed(() =>
+    this.saldos().reduce((total, s) => total + s.quantidade * s.custoMedio, 0),
+  );
 
   constructor(private saldoService: SaldoService) {}
 
@@ -23,21 +26,17 @@ export class SaldosListComponent implements OnInit {
   }
 
   carregar(): void {
-    this.carregando = true;
-    this.erro = '';
+    this.carregando.set(true);
+    this.erro.set('');
     this.saldoService.listar().subscribe({
       next: (dados) => {
-        this.saldos = dados;
-        this.carregando = false;
+        this.saldos.set(dados);
+        this.carregando.set(false);
       },
       error: () => {
-        this.erro = 'Não foi possível carregar os saldos.';
-        this.carregando = false;
+        this.erro.set('Não foi possível carregar os saldos.');
+        this.carregando.set(false);
       },
     });
-  }
-
-  get valorTotalEstoque(): number {
-    return this.saldos.reduce((total, s) => total + s.quantidade * s.custoMedio, 0);
   }
 }

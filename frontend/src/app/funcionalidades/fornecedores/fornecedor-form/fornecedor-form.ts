@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -28,9 +28,9 @@ export class FornecedorFormComponent implements OnInit {
 
   modoEdicao = false;
   fornecedorId: number | null = null;
-  salvando = false;
-  carregando = false;
-  erro = '';
+  salvando = signal(false);
+  carregando = signal(false);
+  erro = signal('');
 
   ngOnInit(): void {
     const param = this.route.snapshot.paramMap.get('id');
@@ -42,15 +42,15 @@ export class FornecedorFormComponent implements OnInit {
   }
 
   carregarFornecedor(id: number): void {
-    this.carregando = true;
+    this.carregando.set(true);
     this.fornecedorService.buscarPorId(id).subscribe({
       next: (dto) => {
         this.form.patchValue(dto);
-        this.carregando = false;
+        this.carregando.set(false);
       },
       error: () => {
-        this.erro = 'Não foi possível carregar o fornecedor.';
-        this.carregando = false;
+        this.erro.set('Não foi possível carregar o fornecedor.');
+        this.carregando.set(false);
       },
     });
   }
@@ -61,8 +61,8 @@ export class FornecedorFormComponent implements OnInit {
       return;
     }
 
-    this.salvando = true;
-    this.erro = '';
+    this.salvando.set(true);
+    this.erro.set('');
     const dto = this.form.getRawValue() as FornecedorDTO;
 
     const requisicao =
@@ -73,8 +73,8 @@ export class FornecedorFormComponent implements OnInit {
     requisicao.subscribe({
       next: () => this.router.navigate(['/fornecedores']),
       error: () => {
-        this.erro = 'Não foi possível salvar o fornecedor. Verifique os dados.';
-        this.salvando = false;
+        this.erro.set('Não foi possível salvar o fornecedor. Verifique os dados.');
+        this.salvando.set(false);
       },
     });
   }

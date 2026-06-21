@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal, computed } from '@angular/core';
 import { AlertaService } from '../../services/alerta';
 import { CommonModule } from '@angular/common';
 import { AlertaDTO } from '../../enums/estoque.models';
@@ -14,15 +14,17 @@ type Filtro = 'todos' | 'nao-lidos' | 'lidos';
   styleUrls: ['./alertas.scss'],
 })
 export class AlertasComponent implements OnInit {
-  alertas: AlertaDTO[] = [];
-  carregando = false;
-  erro = '';
+  alertas = signal<AlertaDTO[]>([]);
+  carregando = signal(false);
+  erro = signal('');
   filtroAtivo: Filtro = 'todos';
 
   readonly tipoLabel: Record<TipoAlerta, string> = {
     ESTOQUE_MINIMO: 'Estoque mínimo',
     ESTOQUE_ZERADO: 'Estoque zerado',
   };
+
+  totalNaoLidos = computed(() => this.alertas().filter((a) => !a.lido).length);
 
   constructor(private alertaService: AlertaService) {}
 
@@ -31,18 +33,18 @@ export class AlertasComponent implements OnInit {
   }
 
   carregar(): void {
-    this.carregando = true;
-    this.erro = '';
+    this.carregando.set(true);
+    this.erro.set('');
     const lido = this.filtroAtivo === 'todos' ? undefined : this.filtroAtivo === 'lidos';
 
     this.alertaService.listar(lido).subscribe({
       next: (dados) => {
-        this.alertas = dados;
-        this.carregando = false;
+        this.alertas.set(dados);
+        this.carregando.set(false);
       },
       error: () => {
-        this.erro = 'Não foi possível carregar os alertas. Tente novamente.';
-        this.carregando = false;
+        this.erro.set('Não foi possível carregar os alertas. Tente novamente.');
+        this.carregando.set(false);
       },
     });
   }
@@ -58,17 +60,15 @@ export class AlertasComponent implements OnInit {
     this.alertaService.marcarComoLido(alerta.id).subscribe(() => {
       alerta.lido = true;
       if (this.filtroAtivo === 'nao-lidos') {
-        this.alertas = this.alertas.filter((a) => a.id !== alerta.id);
+        this.alertas.update((lista) => lista.filter((a) => a.id !== alerta.id));
+      } else {
+        this.alertas.update((lista) => [...lista]);
       }
     });
   }
 
   marcarTodosComoLidos(): void {
-    if (this.totalNaoLidos === 0) return;
+    if (this.totalNaoLidos() === 0) return;
     this.alertaService.marcarTodosComoLidos().subscribe(() => this.carregar());
-  }
-
-  get totalNaoLidos(): number {
-    return this.alertas.filter((a) => !a.lido).length;
   }
 }

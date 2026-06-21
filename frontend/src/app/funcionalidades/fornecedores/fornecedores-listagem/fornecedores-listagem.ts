@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
@@ -13,9 +13,9 @@ import { FornecedorDTO } from '../store/Fornecedor.dto';
   styleUrls: ['./fornecedores-listagem.scss'],
 })
 export class FornecedoresComponent implements OnInit {
-  fornecedores: FornecedorDTO[] = [];
-  carregando = false;
-  erro = '';
+  fornecedores = signal<FornecedorDTO[]>([]);
+  carregando = signal(false);
+  erro = signal('');
 
   filtroNome = '';
   filtroCnpj = '';
@@ -30,18 +30,18 @@ export class FornecedoresComponent implements OnInit {
   }
 
   carregar(): void {
-    this.carregando = true;
-    this.erro = '';
+    this.carregando.set(true);
+    this.erro.set('');
     this.fornecedorService
       .listar(this.filtroNome || undefined, this.filtroCnpj || undefined)
       .subscribe({
         next: (dados) => {
-          this.fornecedores = dados;
-          this.carregando = false;
+          this.fornecedores.set(dados);
+          this.carregando.set(false);
         },
         error: () => {
-          this.erro = 'Não foi possível carregar os fornecedores.';
-          this.carregando = false;
+          this.erro.set('Não foi possível carregar os fornecedores.');
+          this.carregando.set(false);
         },
       });
   }

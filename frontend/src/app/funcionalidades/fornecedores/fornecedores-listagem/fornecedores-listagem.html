@@ -25,13 +25,13 @@
   </div>
 
   <div class="card tabela-card">
-    <div class="estado" *ngIf="carregando">Carregando fornecedores...</div>
-    <div class="estado erro" *ngIf="erro && !carregando">{{ erro }}</div>
-    <div class="estado vazio" *ngIf="!carregando && !erro && fornecedores.length === 0">
+    <div class="estado" *ngIf="carregando()">Carregando fornecedores...</div>
+    <div class="estado erro" *ngIf="erro() && !carregando()">{{ erro() }}</div>
+    <div class="estado vazio" *ngIf="!carregando() && !erro() && fornecedores().length === 0">
       Nenhum fornecedor encontrado.
     </div>
 
-    <table *ngIf="!carregando && fornecedores.length > 0">
+    <table *ngIf="!carregando() && fornecedores().length > 0">
       <thead>
       <tr>
         <th>Razão social</th>
@@ -43,7 +43,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let f of fornecedores">
+      <tr *ngFor="let f of fornecedores()">
         <td class="nome">{{ f.razaoSocial }}</td>
         <td>{{ f.cnpj }}</td>
         <td>{{ f.email }}</td>

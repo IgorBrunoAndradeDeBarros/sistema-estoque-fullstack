@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { MovimentacaoService } from '../services/movimentacao';
@@ -14,25 +14,25 @@ import { MovimentacaoDTO } from '../store/Movimentacao.dto';
 export class MovimentacoesComponent implements OnInit {
   private readonly movimentacaoService = inject(MovimentacaoService);
 
-  movimentacoes: MovimentacaoDTO[] = [];
-  carregando = false;
-  erro = '';
+  movimentacoes = signal<MovimentacaoDTO[]>([]);
+  carregando = signal(false);
+  erro = signal('');
 
   ngOnInit(): void {
     this.carregar();
   }
 
   carregar(): void {
-    this.carregando = true;
-    this.erro = '';
+    this.carregando.set(true);
+    this.erro.set('');
     this.movimentacaoService.listar().subscribe({
       next: (dados: MovimentacaoDTO[]) => {
-        this.movimentacoes = dados;
-        this.carregando = false;
+        this.movimentacoes.set(dados);
+        this.carregando.set(false);
       },
       error: () => {
-        this.erro = 'Não foi possível carregar as movimentações.';
-        this.carregando = false;
+        this.erro.set('Não foi possível carregar as movimentações.');
+        this.carregando.set(false);
       },
     });
   }

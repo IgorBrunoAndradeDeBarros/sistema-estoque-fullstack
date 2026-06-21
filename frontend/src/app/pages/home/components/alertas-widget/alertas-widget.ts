@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { AlertaService } from '../../../../services/alerta';
@@ -14,32 +14,32 @@ import { AlertaDTO } from '../../../../enums/estoque.models';
 export class AlertasWidgetComponent implements OnInit {
   private readonly alertaService = inject(AlertaService);
 
-  alertas: AlertaDTO[] = [];
-  carregando = false;
-  erro = '';
+  alertas = signal<AlertaDTO[]>([]);
+  carregando = signal(false);
+  erro = signal('');
 
   ngOnInit(): void {
     this.carregar();
   }
 
   carregar(): void {
-    this.carregando = true;
-    this.erro = '';
+    this.carregando.set(true);
+    this.erro.set('');
     this.alertaService.listar(false).subscribe({
       next: (dados) => {
-        this.alertas = dados.slice(0, 5);
-        this.carregando = false;
+        this.alertas.set(dados.slice(0, 5));
+        this.carregando.set(false);
       },
       error: () => {
-        this.erro = 'Não foi possível carregar os alertas.';
-        this.carregando = false;
+        this.erro.set('Não foi possível carregar os alertas.');
+        this.carregando.set(false);
       },
     });
   }
 
   marcarComoLido(alerta: AlertaDTO): void {
     this.alertaService.marcarComoLido(alerta.id).subscribe(() => {
-      this.alertas = this.alertas.filter((a) => a.id !== alerta.id);
+      this.alertas.update((lista) => lista.filter((a) => a.id !== alerta.id));
     });
   }
 }
