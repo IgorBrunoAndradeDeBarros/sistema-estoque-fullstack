@@ -18,6 +18,7 @@ pipeline {
             }
             steps {
                 dir('backend') {
+                    sh 'chmod +x ./mvnw'
                     sh './mvnw clean package -DskipTests'
                 }
             }
@@ -32,6 +33,7 @@ pipeline {
             }
             steps {
                 dir('backend') {
+                    sh 'chmod +x ./mvnw'
                     sh './mvnw test'
                 }
             }
