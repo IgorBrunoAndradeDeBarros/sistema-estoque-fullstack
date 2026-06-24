@@ -1,13 +1,17 @@
-# Build
+# ==========================
+# BUILD STAGE
+# ==========================
 FROM maven:3.9.9-eclipse-temurin-21 AS build
 
 WORKDIR /app
 
 COPY . .
 
-RUN ./mvnw clean package -DskipTests
+RUN mvn clean package -DskipTests
 
-# Runtime
+# ==========================
+# RUNTIME STAGE
+# ==========================
 FROM registry.access.redhat.com/ubi9/openjdk-21-runtime:1.24
 
 ENV LANGUAGE='en_US:en'
